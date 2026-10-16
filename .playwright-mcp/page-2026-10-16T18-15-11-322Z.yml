@@ -1,0 +1,82 @@
+- generic [active] [ref=f26e1]:
+  - link "رفتن به محتوای اصلی" [ref=f26e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=f26e3]:
+    - link "صفحه‌ی اصلی پالپ ایران" [ref=f26e4] [cursor=pointer]:
+      - /url: index.html
+      - generic [ref=f26e5]: پالپ
+      - strong [ref=f26e6]: ایران
+    - navigation "منوی وبلاگ" [ref=f26e7]:
+      - list [ref=f26e8]:
+        - listitem [ref=f26e9]:
+          - link "خانه" [ref=f26e10] [cursor=pointer]:
+            - /url: index.html
+        - listitem [ref=f26e11]:
+          - link "وبلاگ" [ref=f26e12] [cursor=pointer]:
+            - /url: blogs.html
+        - listitem [ref=f26e13]:
+          - link "مشاوره" [ref=f26e14] [cursor=pointer]:
+            - /url: index.html#footer-section
+  - main [ref=f26e15]:
+    - generic [ref=f26e16]:
+      - navigation "مسیر صفحه" [ref=f26e17]:
+        - link "وبلاگ" [ref=f26e18] [cursor=pointer]:
+          - /url: blogs.html
+        - generic [aria-hidden] [ref=f26e19]: /
+        - generic [ref=f26e20]: مواد اولیه
+      - article [ref=f26e21]:
+        - generic [ref=f26e22]:
+          - paragraph [ref=f26e23]: نمونه‌ی آموزشی فرضی
+          - paragraph [ref=f26e24]: مواد اولیه
+          - heading "برای ارزیابی خمیر از باگاس چه پرسش‌هایی مطرح است؟" [level=1] [ref=f26e25]
+          - paragraph [ref=f26e26]: موضوعاتی برای ثبت درباره‌ی خوراک، نیاز محصول و داده‌های در دسترس پروژه.
+        - generic [ref=f26e27]:
+          - figure "تصویر آرشیوی یک محیط صنعتی است و به فرایند یا پروژه‌ی مشخصی نسبت داده نمی‌شود." [ref=f26e28]:
+            - img "نمایی از افراد در محیط صنعتی آرشیو پالپ ایران" [ref=f26e29]
+          - paragraph [ref=f26e31]: این متن، نمونه‌ای فرضی برای نمایش قالب وبلاگ است و شرح یک پروژه‌ی اجراشده نیست.
+          - generic [ref=f26e32]:
+            - region [ref=f26e33]:
+              - heading "درباره‌ی ماده‌ی اولیه چه اطلاعاتی ثبت کنیم؟" [level=2] [ref=f26e34]
+              - paragraph [ref=f26e35]: برای آغاز ارزیابی، نوع خوراک، میزان تغییرپذیری، شیوه‌ی تأمین و شرایط نگهداری را تا جایی که داده‌ی واقعی در دسترس است ثبت کنید. این موارد پرسش‌های بعدی درباره‌ی آماده‌سازی و تناسب فرایند را روشن‌تر می‌کنند.
+            - region [ref=f26e36]:
+              - heading "نیاز محصول را کنار ویژگی خوراک بگذارید" [level=2] [ref=f26e37]
+              - paragraph [ref=f26e38]: ویژگی‌های محصول هدف و اطلاعات واقعی خوراک باید هم‌زمان بررسی شوند. یک متن آموزشی عمومی نمی‌تواند جای آزمون نمونه یا ارزیابی ویژه‌ی پروژه را بگیرد.
+            - region [ref=f26e39]:
+              - heading "داده‌های ناموجود را شفاف نگه دارید" [level=2] [ref=f26e40]
+              - paragraph [ref=f26e41]: اگر درباره‌ی دسترسی، کیفیت یا آماده‌سازی اطلاعات کافی وجود ندارد، آن را به‌عنوان موضوع باز ثبت کنید. از برآوردهای فرضی برای نتیجه‌گیری فنی استفاده نکنید.
+          - region [ref=f26e42]:
+            - heading "برای بررسی نیاز پروژه" [level=2] [ref=f26e43]
+            - paragraph [ref=f26e44]: اگر گزینه‌های خوراک، ظرفیت تولید یا محدودیت‌های محل اجرا در پروژه‌ی شما تعیین نشده‌اند، می‌توانید با پالپ ایران درباره‌ی مسیر ارزیابی و خدمات فنی گفتگو کنید.
+            - link "درخواست مشاوره" [ref=f26e45] [cursor=pointer]:
+              - /url: index.html#footer-section
+          - region [ref=f26e46]:
+            - heading "مطالب مرتبط" [level=2] [ref=f26e47]
+            - generic [ref=f26e48]:
+              - link "چطور ماده‌ی اولیه را در ارزیابی خط در نظر بگیریم؟" [ref=f26e49] [cursor=pointer]:
+                - /url: blog.html?article=feedstock
+              - link "پیش از ارزیابی ماشین‌آلات چه اطلاعاتی آماده کنیم؟" [ref=f26e50] [cursor=pointer]:
+                - /url: blog.html?article=evaluation
+        - complementary [ref=f26e51]:
+          - link "بازگشت به فهرست مطالب" [ref=f26e52] [cursor=pointer]:
+            - /url: blogs.html
+            - generic [aria-hidden] [ref=f26e53]: →
+            - text: بازگشت به فهرست مطالب
+          - navigation [ref=f26e54]:
+            - heading "در این مقاله" [level=2] [ref=f26e55]
+            - list [ref=f26e56]:
+              - listitem [ref=f26e57]:
+                - link "درباره‌ی ماده‌ی اولیه چه اطلاعاتی ثبت کنیم؟" [ref=f26e58] [cursor=pointer]:
+                  - /url: "#article-section-1"
+              - listitem [ref=f26e59]:
+                - link "نیاز محصول را کنار ویژگی خوراک بگذارید" [ref=f26e60] [cursor=pointer]:
+                  - /url: "#article-section-2"
+              - listitem [ref=f26e61]:
+                - link "داده‌های ناموجود را شفاف نگه دارید" [ref=f26e62] [cursor=pointer]:
+                  - /url: "#article-section-3"
+  - contentinfo [ref=f26e63]:
+    - link "پالپ ایران" [ref=f26e64] [cursor=pointer]:
+      - /url: index.html
+      - generic [ref=f26e65]: پالپ
+      - strong [ref=f26e66]: ایران
+    - link "بازگشت به وبلاگ" [ref=f26e67] [cursor=pointer]:
+      - /url: blogs.html

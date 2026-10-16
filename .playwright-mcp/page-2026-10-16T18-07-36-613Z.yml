@@ -1,0 +1,135 @@
+- generic [ref=f23e1]:
+  - link "رفتن به محتوای اصلی" [ref=f23e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=f23e3]:
+    - link "صفحه‌ی اصلی پالپ ایران" [ref=f23e4] [cursor=pointer]:
+      - /url: index.html
+      - generic [ref=f23e5]: پالپ
+      - strong [ref=f23e6]: ایران
+    - navigation "منوی وبلاگ" [ref=f23e7]:
+      - list [ref=f23e8]:
+        - listitem [ref=f23e9]:
+          - link "خانه" [ref=f23e10] [cursor=pointer]:
+            - /url: index.html
+        - listitem [ref=f23e11]:
+          - link "وبلاگ" [ref=f23e12] [cursor=pointer]:
+            - /url: blogs.html
+        - listitem [ref=f23e13]:
+          - link "مشاوره" [ref=f23e14] [cursor=pointer]:
+            - /url: index.html#footer-section
+  - main [ref=f23e15]:
+    - generic [ref=f23e16]:
+      - region [ref=f23e17]:
+        - generic [ref=f23e18]:
+          - heading "دانش فنی برای انتخاب آگاهانه" [level=1] [ref=f23e19]:
+            - generic [ref=f23e20]: دانش فنی
+            - strong [ref=f23e21]: برای انتخاب آگاهانه
+          - paragraph [ref=f23e22]: راهنماهایی برای شناخت خطوط تولید خمیر کاغذ، بررسی مواد اولیه و صورت‌بندی پرسش‌های فنی پروژه.
+          - search "جست‌وجو در مقاله‌های نمونه" [ref=f23e23]:
+            - generic [ref=f23e24]:
+              - generic: جست‌وجوی عنوان، موضوع یا واژه‌ی کلیدی
+              - searchbox "جست‌وجوی عنوان، موضوع یا واژه‌ی کلیدی" [ref=f23e25]
+              - button "جست‌وجو" [ref=f23e26] [cursor=pointer]
+          - generic "آمار مقاله‌های نمونه" [ref=f23e30]:
+            - generic [ref=f23e31]:
+              - strong [ref=f23e32]: ۴
+              - generic [ref=f23e33]: مقاله‌ی نمونه
+            - generic [ref=f23e34]:
+              - strong [ref=f23e35]: ۳
+              - generic [ref=f23e36]: دسته‌بندی
+            - generic [ref=f23e37]:
+              - strong [ref=f23e38]: ۰
+              - generic [ref=f23e39]: نویسنده‌ی معرفی‌شده
+      - generic [ref=f23e40]:
+        - generic [ref=f23e41]:
+          - article [ref=f23e42]:
+            - generic [ref=f23e43]:
+              - generic [ref=f23e44]: نمونه‌ی آموزشی فرضی
+              - link "فلاف پالپ" [ref=f23e45] [cursor=pointer]:
+                - /url: "#articles"
+              - heading [level=2] [ref=f23e48]:
+                - link "خط تولید فلاف پالپ از کجا شروع می‌شود؟" [ref=f23e49] [cursor=pointer]:
+                  - /url: blog.html?article=fluff-start
+              - paragraph [ref=f23e50]: پیش از انتخاب ماشین‌آلات، باید محصول موردنظر، ماده‌ی اولیه و محدودیت‌های پروژه را روشن کرد.
+              - link "خواندن مقاله" [ref=f23e51] [cursor=pointer]:
+                - /url: blog.html?article=fluff-start
+                - text: خواندن مقاله
+                - generic [aria-hidden] [ref=f23e52]: ←
+            - img "نمایی از تجهیزات صنعتی در یکی از تصاویر آرشیوی پالپ ایران" [ref=f23e53]
+          - region [ref=f23e54]:
+            - generic [ref=f23e55]:
+              - generic [ref=f23e56]:
+                - heading "همه‌ی نوشته‌ها" [level=2] [ref=f23e57]
+                - paragraph [ref=f23e58]: مطالب این صفحه نمونه‌های فرضی برای نمایش ساختار وبلاگ هستند.
+              - generic [ref=f23e59]: 4 نوشته
+            - generic [ref=f23e60]:
+              - article [ref=f23e61]:
+                - generic [ref=f23e63]:
+                  - generic [ref=f23e64]:
+                    - link "فلاف پالپ" [ref=f23e65] [cursor=pointer]:
+                      - /url: "#articles"
+                    - generic [ref=f23e66]: فرضی
+                  - heading [level=3] [ref=f23e67]:
+                    - link "خط تولید فلاف پالپ از کجا شروع می‌شود؟" [ref=f23e68] [cursor=pointer]:
+                      - /url: blog.html?article=fluff-start
+                  - paragraph [ref=f23e69]: چند پرسش پایه برای روشن‌کردن نیاز پروژه و شروع ارزیابی خط.
+                  - link "ادامه‌ی مطلب" [ref=f23e70] [cursor=pointer]:
+                    - /url: blog.html?article=fluff-start
+                    - text: ادامه‌ی مطلب
+                    - generic [aria-hidden] [ref=f23e71]: ←
+              - article [ref=f23e72]:
+                - generic [ref=f23e74]:
+                  - generic [ref=f23e75]:
+                    - link "مواد اولیه" [ref=f23e76] [cursor=pointer]:
+                      - /url: "#articles"
+                    - generic [ref=f23e77]: فرضی
+                  - heading [level=3] [ref=f23e78]:
+                    - link "چطور ماده‌ی اولیه را در ارزیابی خط در نظر بگیریم؟" [ref=f23e79] [cursor=pointer]:
+                      - /url: blog.html?article=feedstock
+                  - paragraph [ref=f23e80]: از ویژگی‌های خوراک تا دسترسی و آماده‌سازی؛ نکاتی برای صورت‌بندی پرسش‌ها.
+                  - link "ادامه‌ی مطلب" [ref=f23e81] [cursor=pointer]:
+                    - /url: blog.html?article=feedstock
+                    - text: ادامه‌ی مطلب
+                    - generic [aria-hidden] [ref=f23e82]: ←
+              - article [ref=f23e83]:
+                - generic [ref=f23e85]:
+                  - generic [ref=f23e86]:
+                    - link "راه‌اندازی و ارزیابی" [ref=f23e87] [cursor=pointer]:
+                      - /url: "#articles"
+                    - generic [ref=f23e88]: فرضی
+                  - heading [level=3] [ref=f23e89]:
+                    - link "پیش از ارزیابی ماشین‌آلات چه اطلاعاتی آماده کنیم؟" [ref=f23e90] [cursor=pointer]:
+                      - /url: blog.html?article=evaluation
+                  - paragraph [ref=f23e91]: فهرستی کوتاه از اطلاعات پروژه که گفت‌وگوی فنی را دقیق‌تر می‌کند.
+                  - link "ادامه‌ی مطلب" [ref=f23e92] [cursor=pointer]:
+                    - /url: blog.html?article=evaluation
+                    - text: ادامه‌ی مطلب
+                    - generic [aria-hidden] [ref=f23e93]: ←
+              - article [ref=f23e94]:
+                - generic [ref=f23e96]:
+                  - generic [ref=f23e97]:
+                    - link "مواد اولیه" [ref=f23e98] [cursor=pointer]:
+                      - /url: "#articles"
+                    - generic [ref=f23e99]: فرضی
+                  - heading [level=3] [ref=f23e100]:
+                    - link "برای ارزیابی خمیر از باگاس چه پرسش‌هایی مطرح است؟" [ref=f23e101] [cursor=pointer]:
+                      - /url: blog.html?article=bagasse
+                  - paragraph [ref=f23e102]: موضوعاتی برای ثبت درباره‌ی خوراک، نیاز محصول و داده‌های در دسترس پروژه.
+                  - link "ادامه‌ی مطلب" [ref=f23e103] [cursor=pointer]:
+                    - /url: blog.html?article=bagasse
+                    - text: ادامه‌ی مطلب
+                    - generic [aria-hidden] [ref=f23e104]: ←
+        - complementary "موضوعات" [ref=f23e105]:
+          - generic [ref=f23e106]: انتخاب موضوع
+          - combobox "انتخاب موضوع" [ref=f23e107]:
+            - option "همه‌ی نوشته‌ها" [selected]
+            - option "فلاف پالپ"
+            - option "مواد اولیه"
+            - option "راه‌اندازی و ارزیابی"
+  - contentinfo [ref=f23e108]:
+    - link "پالپ ایران" [ref=f23e109] [cursor=pointer]:
+      - /url: index.html
+      - generic [ref=f23e110]: پالپ
+      - strong [ref=f23e111]: ایران
+    - link "بازگشت به وب‌سایت اصلی" [ref=f23e112] [cursor=pointer]:
+      - /url: index.html

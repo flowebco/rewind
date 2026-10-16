@@ -1,0 +1,96 @@
+- generic [ref=f19e1]:
+  - link "رفتن به محتوای اصلی" [ref=f19e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=f19e3]:
+    - link "صفحه‌ی اصلی پالپ ایران" [ref=f19e4] [cursor=pointer]:
+      - /url: index.html
+      - generic [ref=f19e5]: پالپ
+      - strong [ref=f19e6]: ایران
+    - navigation "منوی وبلاگ" [ref=f19e7]:
+      - list [ref=f19e8]:
+        - listitem [ref=f19e9]:
+          - link "خانه" [ref=f19e10] [cursor=pointer]:
+            - /url: index.html
+        - listitem [ref=f19e11]:
+          - link "وبلاگ" [ref=f19e12] [cursor=pointer]:
+            - /url: blogs.html
+        - listitem [ref=f19e13]:
+          - link "مشاوره" [ref=f19e14] [cursor=pointer]:
+            - /url: index.html#footer-section
+  - main [ref=f19e15]:
+    - generic [ref=f19e16]:
+      - generic [ref=f19e17]:
+        - heading "دانش و تجربه‌ی تولید" [level=1] [ref=f19e18]
+        - paragraph [ref=f19e19]: راهنماهایی برای شناخت خطوط تولید خمیر کاغذ، ماشین‌آلات و مواد اولیه.
+      - generic [ref=f19e20]:
+        - generic [ref=f19e21]:
+          - article [ref=f19e22]:
+            - generic [ref=f19e23]:
+              - paragraph [ref=f19e24]: نمونه‌ی آموزشی فرضی
+              - link "فلاف پالپ" [ref=f19e25] [cursor=pointer]:
+                - /url: "#articles"
+              - heading [level=2] [ref=f19e26]:
+                - link "خط تولید فلاف پالپ از کجا شروع می‌شود؟" [ref=f19e27] [cursor=pointer]:
+                  - /url: blog.html?article=fluff-start
+              - paragraph [ref=f19e28]: پیش از انتخاب ماشین‌آلات، باید محصول موردنظر، ماده‌ی اولیه و محدودیت‌های پروژه را روشن کرد.
+              - link "خواندن مقاله" [ref=f19e29] [cursor=pointer]:
+                - /url: blog.html?article=fluff-start
+                - text: خواندن مقاله
+                - generic [aria-hidden] [ref=f19e30]: ←
+            - img "نمایی از تجهیزات صنعتی در یکی از تصاویر آرشیوی پالپ ایران" [ref=f19e31]
+          - region [ref=f19e32]:
+            - generic [ref=f19e33]:
+              - generic [ref=f19e34]:
+                - heading "همه‌ی نوشته‌ها" [level=2] [ref=f19e35]
+                - paragraph [ref=f19e36]: مطالب این صفحه نمونه‌های فرضی برای نمایش ساختار وبلاگ هستند.
+              - generic [ref=f19e37]: 3 نوشته
+            - generic [ref=f19e38]:
+              - article [ref=f19e39]:
+                - paragraph [ref=f19e40]:
+                  - link "فلاف پالپ" [ref=f19e41] [cursor=pointer]:
+                    - /url: "#articles"
+                  - generic [ref=f19e42]: مقاله‌ی نمونه
+                - heading [level=3] [ref=f19e43]:
+                  - link "خط تولید فلاف پالپ از کجا شروع می‌شود؟" [ref=f19e44] [cursor=pointer]:
+                    - /url: blog.html?article=fluff-start
+                - paragraph [ref=f19e45]: چند پرسش پایه برای روشن‌کردن نیاز پروژه و شروع ارزیابی خط.
+              - article [ref=f19e46]:
+                - paragraph [ref=f19e47]:
+                  - link "مواد اولیه" [ref=f19e48] [cursor=pointer]:
+                    - /url: "#articles"
+                  - generic [ref=f19e49]: مقاله‌ی نمونه
+                - heading [level=3] [ref=f19e50]:
+                  - link "چطور ماده‌ی اولیه را در ارزیابی خط در نظر بگیریم؟" [ref=f19e51] [cursor=pointer]:
+                    - /url: blog.html?article=feedstock
+                - paragraph [ref=f19e52]: از ویژگی‌های خوراک تا دسترسی و آماده‌سازی؛ نکاتی برای صورت‌بندی پرسش‌ها.
+              - article [ref=f19e53]:
+                - paragraph [ref=f19e54]:
+                  - link "راه‌اندازی و ارزیابی" [ref=f19e55] [cursor=pointer]:
+                    - /url: "#articles"
+                  - generic [ref=f19e56]: مقاله‌ی نمونه
+                - heading [level=3] [ref=f19e57]:
+                  - link "پیش از ارزیابی ماشین‌آلات چه اطلاعاتی آماده کنیم؟" [ref=f19e58] [cursor=pointer]:
+                    - /url: blog.html?article=evaluation
+                - paragraph [ref=f19e59]: فهرستی کوتاه از اطلاعات پروژه که گفت‌وگوی فنی را دقیق‌تر می‌کند.
+        - complementary [ref=f19e60]:
+          - heading "موضوعات" [level=2] [ref=f19e61]
+          - paragraph [ref=f19e62]: برای محدودکردن فهرست، یک موضوع را انتخاب کنید.
+          - group "فیلتر موضوعی نوشته‌ها" [ref=f19e63]:
+            - button "همه‌ی نوشته‌ها" [pressed] [ref=f19e64] [cursor=pointer]
+            - button "فلاف پالپ" [ref=f19e65] [cursor=pointer]
+            - button "مواد اولیه" [ref=f19e66] [cursor=pointer]
+            - button "راه‌اندازی و ارزیابی" [ref=f19e67] [cursor=pointer]
+          - generic [ref=f19e68]:
+            - heading "برای پروژه‌ی خود راهنمایی می‌خواهید؟" [level=3] [ref=f19e69]
+            - paragraph [ref=f19e70]: برای بررسی نیازهای یک خط تولید، با پالپ ایران در ارتباط باشید.
+            - link "راه‌های ارتباطی" [ref=f19e71] [cursor=pointer]:
+              - /url: index.html#footer-section
+              - text: راه‌های ارتباطی
+              - generic [aria-hidden] [ref=f19e72]: ←
+  - contentinfo [ref=f19e73]:
+    - link "پالپ ایران" [ref=f19e74] [cursor=pointer]:
+      - /url: index.html
+      - generic [ref=f19e75]: پالپ
+      - strong [ref=f19e76]: ایران
+    - link "بازگشت به وب‌سایت اصلی" [ref=f19e77] [cursor=pointer]:
+      - /url: index.html

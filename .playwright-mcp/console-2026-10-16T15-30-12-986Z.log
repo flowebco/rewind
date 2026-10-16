@@ -1,0 +1,3 @@
+[      20ms] [ERROR] Loading the image 'http://127.0.0.1:55250/media/portfolio.jpg' violates the following Content Security Policy directive: "img-src data: blob:". The action has been blocked. @ http://127.0.0.1:55250/sketch/1?raw=1:12
+[      26ms] [ERROR] Loading the font 'http://127.0.0.1:55250/fonts/Vazirmatn-Regular.woff2' violates the following Content Security Policy directive: "font-src https://fonts.gstatic.com data:". The action has been blocked. @ http://127.0.0.1:55250/sketch/1?raw=1:0
+[      26ms] [ERROR] Loading the font 'http://127.0.0.1:55250/fonts/Vazirmatn-Bold.woff2' violates the following Content Security Policy directive: "font-src https://fonts.gstatic.com data:". The action has been blocked. @ http://127.0.0.1:55250/sketch/1?raw=1:0

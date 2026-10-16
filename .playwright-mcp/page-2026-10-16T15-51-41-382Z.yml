@@ -1,0 +1,82 @@
+- generic [active] [ref=f4e1]:
+  - link "رفتن به محتوای اصلی" [ref=f4e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=f4e3]:
+    - link "صفحه‌ی اصلی پالپ ایران" [ref=f4e4] [cursor=pointer]:
+      - /url: index.html
+      - generic [ref=f4e5]: پالپ
+      - strong [ref=f4e6]: ایران
+    - navigation "منوی وبلاگ" [ref=f4e7]:
+      - list [ref=f4e8]:
+        - listitem [ref=f4e9]:
+          - link "خانه" [ref=f4e10] [cursor=pointer]:
+            - /url: index.html
+        - listitem [ref=f4e11]:
+          - link "وبلاگ" [ref=f4e12] [cursor=pointer]:
+            - /url: blogs.html
+        - listitem [ref=f4e13]:
+          - link "مشاوره" [ref=f4e14] [cursor=pointer]:
+            - /url: index.html#footer-section
+  - main [ref=f4e15]:
+    - generic [ref=f4e16]:
+      - navigation "مسیر صفحه" [ref=f4e17]:
+        - link "وبلاگ" [ref=f4e18] [cursor=pointer]:
+          - /url: blogs.html
+        - generic [aria-hidden] [ref=f4e19]: /
+        - generic [ref=f4e20]: مواد اولیه
+      - generic [ref=f4e21]:
+        - article [ref=f4e22]:
+          - generic [ref=f4e23]:
+            - paragraph [ref=f4e24]: نمونه‌ی آموزشی فرضی
+            - paragraph [ref=f4e25]: مواد اولیه
+            - heading "چطور ماده‌ی اولیه را در ارزیابی خط در نظر بگیریم؟" [level=1] [ref=f4e26]
+            - paragraph [ref=f4e27]: از ویژگی‌های خوراک تا دسترسی و آماده‌سازی؛ نکاتی برای صورت‌بندی پرسش‌ها.
+          - figure "تصویر آرشیوی تجهیزات صنعتی است و نمونه‌ی مشخصی از فرایند این مقاله نیست." [ref=f4e28]:
+            - img "نمایی از تجهیزات صنعتی در آرشیو تصاویر پالپ ایران" [ref=f4e29]
+          - paragraph [ref=f4e31]: این متن، نمونه‌ای فرضی برای نمایش قالب وبلاگ است و شرح یک پروژه‌ی اجراشده نیست.
+          - generic [ref=f4e32]:
+            - region [ref=f4e33]:
+              - heading "درباره‌ی خوراک چه می‌دانیم؟" [level=2] [ref=f4e34]
+              - paragraph [ref=f4e35]: در ارزیابی اولیه، بهتر است نوع ماده‌ی اولیه، تغییرپذیری آن، نحوه‌ی تأمین و شرایط نگهداری ثبت شود. این اطلاعات زمینه‌ی پرسش‌های دقیق‌تر درباره‌ی آماده‌سازی و تناسب فرایند را فراهم می‌کنند.
+            - region [ref=f4e36]:
+              - heading "دسترسی را از فرض جدا کنید" [level=2] [ref=f4e37]
+              - paragraph [ref=f4e38]: موجودبودن یک ماده در منطقه به‌تنهایی برای تصمیم‌گیری کافی نیست. مقدار قابل‌تأمین، پیوستگی تأمین و ویژگی‌های واقعی نمونه‌ها باید بررسی شوند؛ اگر داده‌ای هنوز در دسترس نیست، آن را به‌عنوان موضوع باز نگه دارید.
+            - region [ref=f4e39]:
+              - heading "اطلاعات را به طراحی پروژه وصل کنید" [level=2] [ref=f4e40]
+              - paragraph [ref=f4e41]: مشخصات محصول موردنظر، شرایط محل اجرا و ویژگی‌های ماده‌ی اولیه باید در کنار هم بررسی شوند. انتخاب تجهیزات یا نتیجه‌گیری فنی بدون این زمینه، از یک نمونه‌ی عمومی قابل استنتاج نیست.
+          - region [ref=f4e42]:
+            - heading "برای بررسی نیاز پروژه" [level=2] [ref=f4e43]
+            - paragraph [ref=f4e44]: با پالپ ایران درباره‌ی طراحی، ساخت، نصب و راه‌اندازی خطوط تولید گفت‌وگو کنید.
+            - link "راه‌های ارتباطی" [ref=f4e45] [cursor=pointer]:
+              - /url: index.html#footer-section
+          - region [ref=f4e46]:
+            - heading "مطالب مرتبط" [level=2] [ref=f4e47]
+            - generic [ref=f4e48]:
+              - link "خط تولید فلاف پالپ از کجا شروع می‌شود؟" [ref=f4e49] [cursor=pointer]:
+                - /url: blog.html?article=fluff-start
+              - link "پیش از ارزیابی ماشین‌آلات چه اطلاعاتی آماده کنیم؟" [ref=f4e50] [cursor=pointer]:
+                - /url: blog.html?article=evaluation
+        - complementary [ref=f4e51]:
+          - link "بازگشت به فهرست مطالب" [ref=f4e52] [cursor=pointer]:
+            - /url: blogs.html
+            - generic [aria-hidden] [ref=f4e53]: →
+            - text: بازگشت به فهرست مطالب
+          - navigation [ref=f4e54]:
+            - heading "در این مقاله" [level=2] [ref=f4e55]
+            - list [ref=f4e56]:
+              - listitem [ref=f4e57]:
+                - link "درباره‌ی خوراک چه می‌دانیم؟" [ref=f4e58] [cursor=pointer]:
+                  - /url: "#article-section-1"
+              - listitem [ref=f4e59]:
+                - link "دسترسی را از فرض جدا کنید" [ref=f4e60] [cursor=pointer]:
+                  - /url: "#article-section-2"
+              - listitem [ref=f4e61]:
+                - link "اطلاعات را به طراحی پروژه وصل کنید" [ref=f4e62] [cursor=pointer]:
+                  - /url: "#article-section-3"
+  - contentinfo [ref=f4e63]:
+    - link "پالپ ایران" [ref=f4e64] [cursor=pointer]:
+      - /url: index.html
+      - generic [ref=f4e65]: پالپ
+      - strong [ref=f4e66]: ایران
+    - link "بازگشت به وبلاگ" [ref=f4e67] [cursor=pointer]:
+      - /url: blogs.html

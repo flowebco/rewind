@@ -1,0 +1,130 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - img "Impeccable" [ref=e4]
+  - main [ref=e19]:
+    - generic [ref=e20]:
+      - heading "ساختار وبلاگ پالپ ایران" [level=1] [ref=e29]
+      - paragraph [ref=e30]: کدام چینش برای پیدا کردن و خواندن مطالب فنی مناسب‌تر است؟
+      - generic [ref=e32]:
+        - article [ref=e33]:
+          - generic [ref=e34]:
+            - generic [ref=e35]:
+              - generic [ref=e36]: THE ROLL
+              - generic [ref=e37]:
+                - generic [ref=e38]: sketching…
+                - paragraph [ref=e41]: sketch
+                - generic [ref=e42]:
+                  - button "Expand the image" [ref=e43] [cursor=pointer]
+                  - button "Flip the card" [ref=e46] [cursor=pointer]:
+                    - generic [ref=e50]: Details
+              - generic [ref=e51]:
+                - heading "راهنمای خط تولید" [level=2] [ref=e52]
+                - paragraph [ref=e53]: یک راهنمای موضوعی، خواننده را از سؤال خط تولید به مقاله‌ی مناسب می‌رساند.
+                - generic [ref=e54]:
+                  - generic [ref=e55]:
+                    - generic "#e5edf5" [ref=e56]
+                    - generic "#2d3748" [ref=e57]
+                    - generic "#e75a08" [ref=e58]
+                    - generic "#ffffff" [ref=e59]
+                  - generic [ref=e60]: فونت وزیرمتن
+                  - generic [ref=e61]: سطوح برجسته و فرورفته
+                - paragraph [ref=e62]:
+                  - generic [ref=e63]: Risk
+                  - text: ستون موضوعات در موبایل باید به فیلتر فشرده تبدیل شود تا خواندن آغازین عقب نیفتد.
+                - button "Build this" [ref=e64] [cursor=pointer]
+            - generic:
+              - generic:
+                - paragraph: The full read · راهنمای خط تولید
+                - button "Flip the card":
+                  - generic: Front
+              - generic:
+                - paragraph:
+                  - generic: First viewport
+                  - text: سربرگ برند در بالا، راه‌یابی موضوعی در ستون کناری، و مقاله‌ی منتخب در ستون اصلی.
+                - paragraph:
+                  - generic: Risk
+                  - text: ستون موضوعات در موبایل باید به فیلتر فشرده تبدیل شود تا خواندن آغازین عقب نیفتد.
+                - button "Build this"
+        - article [ref=e65]:
+          - generic [ref=e66]:
+            - generic [ref=e67]:
+              - generic [ref=e68]:
+                - generic [ref=e69]: sketching…
+                - paragraph [ref=e72]: sketch
+                - generic [ref=e73]:
+                  - button "Expand the image" [ref=e74] [cursor=pointer]
+                  - button "Flip the card" [ref=e77] [cursor=pointer]:
+                    - generic [ref=e81]: Details
+              - generic [ref=e82]:
+                - heading "نمایه‌ی موضوعات" [level=2] [ref=e83]
+                - paragraph [ref=e84]: فهرست دسته‌ها در بالای صفحه می‌ماند و نوشته‌ها به شکل ردیف‌های تحریریه‌ای اسکن می‌شوند.
+                - generic [ref=e85]:
+                  - generic [ref=e86]:
+                    - generic "#e5edf5" [ref=e87]
+                    - generic "#2d3748" [ref=e88]
+                    - generic "#e75a08" [ref=e89]
+                    - generic "#ffffff" [ref=e90]
+                  - generic [ref=e91]: فونت وزیرمتن
+                  - generic [ref=e92]: خطوط جداکننده‌ی ظریف
+                  - generic [ref=e93]: سایه‌ی نرم
+                - paragraph [ref=e94]:
+                  - generic [ref=e95]: Risk
+                  - text: با زیادشدن دسته‌ها، نوار افقی باید در موبایل بدون بریدن عنوان‌ها پیمایش‌پذیر بماند.
+                - button "Build this" [ref=e96] [cursor=pointer]
+            - generic:
+              - generic:
+                - paragraph: The full read · نمایه‌ی موضوعات
+                - button "Flip the card":
+                  - generic: Front
+              - generic:
+                - paragraph:
+                  - generic: First viewport
+                  - text: نوار دسته‌بندی زیر عنوان، سپس یک مطلب منتخب تصویری و فهرست فشرده‌ی نوشته‌ها.
+                - paragraph:
+                  - generic: Risk
+                  - text: با زیادشدن دسته‌ها، نوار افقی باید در موبایل بدون بریدن عنوان‌ها پیمایش‌پذیر بماند.
+                - button "Build this"
+        - article [ref=e97]:
+          - generic [ref=e98]:
+            - generic [ref=e99]:
+              - generic [ref=e100]:
+                - generic [ref=e101]: sketching…
+                - paragraph [ref=e104]: sketch
+                - generic [ref=e105]:
+                  - button "Expand the image" [ref=e106] [cursor=pointer]
+                  - button "Flip the card" [ref=e109] [cursor=pointer]:
+                    - generic [ref=e113]: Details
+              - generic [ref=e114]:
+                - heading "میز مطالعه" [level=2] [ref=e115]
+                - paragraph [ref=e116]: یک یادداشت برجسته در بالای صفحه، خواننده را وارد فهرستی کوتاه و خوانا از مطالب می‌کند.
+                - generic [ref=e117]:
+                  - generic [ref=e118]:
+                    - generic "#e5edf5" [ref=e119]
+                    - generic "#2d3748" [ref=e120]
+                    - generic "#e75a08" [ref=e121]
+                    - generic "#ffffff" [ref=e122]
+                  - generic [ref=e123]: فونت وزیرمتن
+                  - generic [ref=e124]: تصویر صنعتی واقعی
+                  - generic [ref=e125]: فهرست شماره‌دار
+                - paragraph [ref=e126]:
+                  - generic [ref=e127]: Risk
+                  - text: تصویر منتخب نباید توجه را از عنوان و مسیر دسترسی به باقی مطالب بگیرد.
+                - button "Build this" [ref=e128] [cursor=pointer]
+            - generic:
+              - generic:
+                - paragraph: The full read · میز مطالعه
+                - button "Flip the card":
+                  - generic: Front
+              - generic:
+                - paragraph:
+                  - generic: First viewport
+                  - text: عنوان و توضیح در سمت راست، تصویر مطلب منتخب در سمت چپ، و چند پیوند خواندن در پایین.
+                - paragraph:
+                  - generic: Risk
+                  - text: تصویر منتخب نباید توجه را از عنوان و مسیر دسترسی به باقی مطالب بگیرد.
+                - button "Build this"
+  - contentinfo [ref=e129]:
+    - 'textbox "Optional steer: what should be different or kept?" [ref=e130]'
+    - button "← Safer hand" [ref=e131] [cursor=pointer]
+    - button "Re-roll" [ref=e133] [cursor=pointer]
+    - button "Bolder hand →" [ref=e142] [cursor=pointer]

@@ -1,0 +1,38 @@
+- generic [ref=f21e1]:
+  - link "رفتن به محتوای اصلی" [ref=f21e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=f21e3]:
+    - link "صفحه‌ی اصلی پالپ ایران" [ref=f21e4] [cursor=pointer]:
+      - /url: index.html
+      - generic [ref=f21e5]: پالپ
+      - strong [ref=f21e6]: ایران
+    - navigation "منوی وبلاگ" [ref=f21e7]:
+      - list [ref=f21e8]:
+        - listitem [ref=f21e9]:
+          - link "خانه" [ref=f21e10] [cursor=pointer]:
+            - /url: index.html
+        - listitem [ref=f21e11]:
+          - link "وبلاگ" [ref=f21e12] [cursor=pointer]:
+            - /url: blogs.html
+        - listitem [ref=f21e13]:
+          - link "مشاوره" [ref=f21e14] [cursor=pointer]:
+            - /url: index.html#footer-section
+  - main [ref=f21e15]:
+    - generic [ref=f21e16]:
+      - navigation "مسیر صفحه" [ref=f21e17]:
+        - link "وبلاگ" [ref=f21e18] [cursor=pointer]:
+          - /url: blogs.html
+        - generic [aria-hidden] [ref=f21e19]: /
+        - generic [ref=f21e20]: فلاف پالپ
+      - generic [ref=f21e21]:
+        - heading "این نوشته در فهرست نمونه نیست" [level=1] [ref=f21e22]
+        - paragraph [ref=f21e23]: از فهرست وبلاگ یک مطلب را انتخاب کنید.
+        - link "رفتن به فهرست وبلاگ" [ref=f21e24] [cursor=pointer]:
+          - /url: blogs.html
+  - contentinfo [ref=f21e25]:
+    - link "پالپ ایران" [ref=f21e26] [cursor=pointer]:
+      - /url: index.html
+      - generic [ref=f21e27]: پالپ
+      - strong [ref=f21e28]: ایران
+    - link "بازگشت به وبلاگ" [ref=f21e29] [cursor=pointer]:
+      - /url: blogs.html

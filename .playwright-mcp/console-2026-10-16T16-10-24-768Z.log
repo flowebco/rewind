@@ -1,0 +1,2 @@
+[      62ms] TypeError: Cannot read properties of null (reading 'addEventListener')
+    at http://127.0.0.1:8000/js/app.js:117:18

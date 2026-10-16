@@ -1,0 +1,140 @@
+- generic [ref=f17e1]:
+  - banner [ref=f17e2]:
+    - navigation "منوی اصلی" [ref=f17e3]:
+      - list [ref=f17e4]:
+        - listitem [ref=f17e5]:
+          - link "خدمات" [ref=f17e6] [cursor=pointer]:
+            - /url: "#services"
+        - listitem [ref=f17e7]:
+          - link "محصولات" [ref=f17e8] [cursor=pointer]:
+            - /url: "#products"
+        - listitem [ref=f17e9]:
+          - link "پروژه‌ها و افتخارات" [ref=f17e10] [cursor=pointer]:
+            - /url: "#projects"
+        - listitem [ref=f17e11]:
+          - link "وبلاگ" [ref=f17e12] [cursor=pointer]:
+            - /url: blogs.html
+        - listitem [ref=f17e13]:
+          - link "ارتباط" [ref=f17e14] [cursor=pointer]:
+            - /url: "#footer-section"
+  - main [ref=f17e15]:
+    - generic [ref=f17e16]:
+      - img "پالپ ایران" [ref=f17e17]
+      - generic [ref=f17e18]:
+        - heading "طراحی، ساخت، نصب و راه‌اندازی خطوط تولید خمیر کاغذ فلاف پالپ خطوط تولید آلفا سلولز از پنبه و ساقه موز خطوط تولید خمیر کاغذ از ضایعات کشاورزی و باگاس" [level=1] [ref=f17e19]:
+          - generic [ref=f17e20]: طراحی، ساخت،نصب و راه‌اندازی
+          - generic [ref=f17e21]:
+            - generic [ref=f17e22]: خطوط تولید خمیر کاغذ فلاف پالپ
+            - generic [ref=f17e23]: خطوط تولید آلفا سلولز از پنبه و ساقه موز
+            - generic [ref=f17e24]: خطوط تولید خمیر کاغذ از ضایعات کشاورزی و باگاس
+        - generic [ref=f17e25]:
+          - link "مشاوره رایگان" [ref=f17e26] [cursor=pointer]:
+            - /url: "#footer-section"
+          - link "مشاهده محصولات" [ref=f17e27] [cursor=pointer]:
+            - /url: "#products"
+    - generic [ref=f17e28]:
+      - heading "خدمات تخصصی" [level=2] [ref=f17e29]
+      - generic [ref=f17e62]:
+        - generic [ref=f17e64]:
+          - heading "طراحی حرفه‌ای" [level=3] [ref=f17e65]
+          - paragraph [ref=f17e66]: طراحی و مهندسی خطوط تولید خمیر کاغذ بهداشتی (Fluff Pulp) در ظرفیت‌های ۵ تا ۱۰۰ تن در روز با دانش فنی ۱۰۰٪ بومی و کیفیت رقابتی با نمونه‌های جهانی.
+        - generic [ref=f17e68]:
+          - heading "ساخت ماشین‌آلات" [level=3] [ref=f17e69]
+          - paragraph [ref=f17e70]: ساخت تمامی ماشین‌آلات و تجهیزات خطوط تولید فلاف پالپ با استفاده از دانش فنی ۱۰۰٪ بومی و مواد اولیه با کیفیت.
+        - generic [ref=f17e72]:
+          - heading "راه‌اندازی خط تولید" [level=3] [ref=f17e73]
+          - paragraph [ref=f17e74]: نصب، راه‌اندازی و آموزش کامل کارکنان شامل تولید، کنترل کیفیت، مدیریت فروش، انبارداری و حسابداری.
+        - generic [ref=f17e76]:
+          - heading "گارانتی یک ساله" [level=3] [ref=f17e77]
+          - paragraph [ref=f17e78]: گارانتی یک ساله قطعات (به غیر از قطعات الکتریکی) و حضور عوامل فنی تا پایان راه‌اندازی و تضمین کیفیت تولید.
+        - generic [ref=f17e80]:
+          - heading "۱۰ سال خدمات پس از فروش" [level=3] [ref=f17e81]
+          - paragraph [ref=f17e82]: پشتیبانی ۲۴ ساعته تلفنی برای رفع مشکلات فنی، تأمین مواد اولیه حداقل یک سال و انعقاد قرارداد فروش محصول تولیدی.
+    - generic [ref=f17e83]:
+      - heading "محصولات و تکنولوژی‌ها" [level=2] [ref=f17e84]
+      - generic [ref=f17e85]:
+        - article [ref=f17e86] [cursor=pointer]:
+          - img "رول خمیر فلاف پالپ تصفیه شده و معمولی" [ref=f17e88]
+          - heading "خمیر فلاف پالپ" [level=3] [ref=f17e89]
+          - paragraph [ref=f17e90]: ماده اولیه اصلی تولید پوشک بچه، نوار بهداشتی و پدهای بیمارستانی. تولید در دو نوع تصفیه شده (Treated) و معمولی.
+          - button "درخواست مشاوره" [ref=f17e91]
+        - article [ref=f17e92] [cursor=pointer]:
+          - img "آلفا سلولز باکیفیت تهیه شده از لینتر پنبه" [ref=f17e94]
+          - heading "آلفا سلولز (لینتر پنبه)" [level=3] [ref=f17e95]
+          - paragraph [ref=f17e96]: تولید خمیر کاغذ با کیفیت بسیار بالا از لینتر پنبه جهت استفاده در صنایع حساس شیمیایی و استراتژیک.
+          - button "درخواست مشاوره" [ref=f17e97]
+        - article [ref=f17e98] [cursor=pointer]:
+          - img "تولید خمیر کاغذ اقتصادی و باکیفیت از باگاس و ضایعات کشاورزی" [ref=f17e100]
+          - heading "خمیر از باگاس" [level=3] [ref=f17e101]
+          - paragraph [ref=f17e102]: بهره‌گیری از ضایعات کشاورزی (باگاس) برای تولید خمیر کاغذ؛ راهکاری پایدار و اقتصادی برای جایگزینی منابع چوبی.
+          - button "درخواست مشاوره" [ref=f17e103]
+    - generic [ref=f17e104]:
+      - heading "از تجربه تا اجرا" [level=2] [ref=f17e105]
+      - paragraph [ref=f17e106]: در ۱۸ سال گذشته، ۱۷ پروژه را در سراسر ایران از طراحی تا راه‌اندازی همراهی کرده‌ایم.
+      - generic [ref=f17e107]:
+        - generic [ref=f17e108]:
+          - heading "پروژه‌های اجراشده" [level=3] [ref=f17e109]
+          - paragraph [ref=f17e110]: نمایی از سالن تولید، تجهیزات نصب‌شده و مراحل اجرا
+        - generic [ref=f17e111]:
+          - figure [ref=f17e112]:
+            - img "بازدید فنی از تجهیزات و مخازن خط تولید" [ref=f17e113]
+          - figure [ref=f17e114]:
+            - img "نمای سالن و ماشین‌آلات نصب‌شده در خط تولید" [ref=f17e115]
+          - figure [ref=f17e116]:
+            - img "همکاری تیم فنی در محل اجرای خط تولید" [ref=f17e117]
+      - generic [ref=f17e119]:
+        - generic [ref=f17e120]:
+          - strong [ref=f17e121]: ۱۸ سال
+          - generic [ref=f17e122]: سابقهٔ طراحی و اجرا
+        - generic [ref=f17e123]:
+          - strong [ref=f17e124]: ۱۷ پروژه
+          - generic [ref=f17e125]: موفق در سراسر ایران
+        - generic [ref=f17e126]:
+          - strong [ref=f17e127]: از طراحی تا تحویل
+          - generic [ref=f17e128]: نصب، راه‌اندازی، آموزش
+      - generic [ref=f17e129]:
+        - article [ref=f17e130]:
+          - img "تندیس نقش مدیران ارزش‌آفرین در توسعه ملی" [ref=f17e132]
+          - heading "تندیس ملی" [level=3] [ref=f17e133]
+          - paragraph [ref=f17e134]: نقش مدیران ارزش‌آفرین در توسعه ملی، ۲۲ اسفند ۱۳۹۱، صدا و سیما
+        - article [ref=f17e135]:
+          - img "گواهی سمینار مدیریت کیفیت و مشتری‌مداری" [ref=f17e137]
+          - heading "مدیریت کیفیت" [level=3] [ref=f17e138]
+          - paragraph [ref=f17e139]: سمینار مدیریت کیفیت و مشتری‌مداری، Alliance، ۳۰ مرداد ۱۳۹۳
+        - article [ref=f17e140]:
+          - img "گواهی دوره مدیریت آکادمی نیدرزاکسن" [ref=f17e142]
+          - heading "آکادمی نیدرزاکسن" [level=3] [ref=f17e143]
+          - paragraph [ref=f17e144]: دورهٔ ۱۶ ساعتهٔ مدیریت، ۱۷ و ۱۸ فوریه ۲۰۲۰
+    - generic [ref=f17e145]:
+      - heading "آماده راه‌اندازی خط تولید خود هستید؟" [level=2] [ref=f17e146]
+      - paragraph [ref=f17e147]: با ۱۸ سال سابقه و اجرای ۱۷ پروژه موفق در سراسر ایران، ما از صفر تا صد در کنار شما هستیم.
+      - generic [ref=f17e148]:
+        - textbox "ایمیل یا شماره تماس" [ref=f17e149]:
+          - /placeholder: ایمیل یا شماره تماس شما...
+        - button "ثبت درخواست" [ref=f17e150] [cursor=pointer]
+      - generic "اطلاعات تماس پالپ ایران" [ref=f17e151]:
+        - generic [ref=f17e156]:
+          - generic [ref=f17e157]: همراه
+          - link "0912 179 8057" [ref=f17e158] [cursor=pointer]:
+            - /url: tel:09121798057
+          - link "0912 234 6800" [ref=f17e159] [cursor=pointer]:
+            - /url: tel:09122346800
+        - generic [ref=f17e164]:
+          - generic [ref=f17e165]: ثابت
+          - link "021 8867 3823" [ref=f17e166] [cursor=pointer]:
+            - /url: tel:02188673823
+          - link "021 8867 3822" [ref=f17e167] [cursor=pointer]:
+            - /url: tel:02188673822
+        - generic [ref=f17e173]:
+          - generic [ref=f17e174]: ایمیل
+          - link "info@pulpiran.ir" [ref=f17e175] [cursor=pointer]:
+            - /url: mailto:info@pulpiran.ir
+      - list "شبکه‌های اجتماعی پالپ ایران" [ref=f17e176]:
+        - listitem [ref=f17e177]:
+          - link "واتس اپ پالپ ایران" [ref=f17e178] [cursor=pointer]:
+            - /url: https://wa.me/989121798057
+        - listitem [ref=f17e181]:
+          - link "ایمیل پالپ ایران" [ref=f17e182] [cursor=pointer]:
+            - /url: mailto:info@pulpiran.ir
+      - paragraph [ref=f17e186]: © ۲۰۲۶ شرکت توان و تولید سلولز پایتخت (پالپ ایران). تمامی حقوق محفوظ است.
+  - button "باز کردن مشاوره" [ref=f17e187] [cursor=pointer]

@@ -1,0 +1,88 @@
+- generic [ref=f9e1]:
+  - link "رفتن به محتوای اصلی" [ref=f9e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=f9e3]:
+    - link "صفحه‌ی اصلی پالپ ایران" [ref=f9e4] [cursor=pointer]:
+      - /url: index.html
+      - generic [ref=f9e5]: پالپ
+      - strong [ref=f9e6]: ایران
+    - navigation "منوی وبلاگ" [ref=f9e7]:
+      - list [ref=f9e8]:
+        - listitem [ref=f9e9]:
+          - link "خانه" [ref=f9e10] [cursor=pointer]:
+            - /url: index.html
+        - listitem [ref=f9e11]:
+          - link "وبلاگ" [ref=f9e12] [cursor=pointer]:
+            - /url: blogs.html
+        - listitem [ref=f9e13]:
+          - link "مشاوره" [ref=f9e14] [cursor=pointer]:
+            - /url: index.html#footer-section
+  - main [ref=f9e15]:
+    - generic [ref=f9e16]:
+      - navigation "مسیر صفحه" [ref=f9e17]:
+        - link "وبلاگ" [ref=f9e18] [cursor=pointer]:
+          - /url: blogs.html
+        - generic [aria-hidden] [ref=f9e19]: /
+        - generic [ref=f9e20]: فلاف پالپ
+      - generic [ref=f9e21]:
+        - article [ref=f9e22]:
+          - generic [ref=f9e23]:
+            - paragraph [ref=f9e24]: نمونه‌ی آموزشی فرضی
+            - paragraph [ref=f9e25]: فلاف پالپ
+            - heading "خط تولید فلاف پالپ از کجا شروع می‌شود؟" [level=1] [ref=f9e26]
+            - paragraph [ref=f9e27]: پیش از انتخاب ماشین‌آلات، باید محصول موردنظر، ماده‌ی اولیه و محدودیت‌های پروژه را روشن کرد.
+          - figure "تصویر آرشیوی سایت از تجهیزات صنعتی است و به خط فلاف پالپ مشخصی نسبت داده نمی‌شود." [ref=f9e28]:
+            - img "نمایی از تجهیزات صنعتی در یکی از تصاویر آرشیوی پالپ ایران" [ref=f9e29]
+          - paragraph [ref=f9e31]: این متن، نمونه‌ای فرضی برای نمایش قالب وبلاگ است و شرح یک پروژه‌ی اجراشده نیست.
+          - generic [ref=f9e32]:
+            - region [ref=f9e33]:
+              - heading "ابتدا محصول موردنظر را روشن کنید" [level=2] [ref=f9e34]
+              - paragraph [ref=f9e35]: گفت‌وگو درباره‌ی یک خط تولید از شناخت محصولی آغاز می‌شود که قرار است تولید شود. کاربرد نهایی، ویژگی‌های مورد انتظار و دامنه‌ی پروژه کمک می‌کنند پرسش‌های بعدی درباره‌ی مواد اولیه و تجهیزات شکل دقیق‌تری بگیرند.
+            - region [ref=f9e36]:
+              - heading "ماده‌ی اولیه را در کنار فرایند ببینید" [level=2] [ref=f9e37]
+              - paragraph [ref=f9e38]: نوع ماده‌ی اولیه، کیفیت و یکنواختی آن، شیوه‌ی تأمین و شرایط نگهداری از موضوعاتی هستند که باید در ارزیابی اولیه ثبت شوند. جزئیات آماده‌سازی و فرایند به طراحی همان پروژه وابسته است و نباید از یک نمونه‌ی عمومی نتیجه‌گیری شود.
+            - region [ref=f9e39]:
+              - heading "ماشین‌آلات را به‌صورت یک زنجیره بررسی کنید" [level=2] [ref=f9e40]
+              - paragraph [ref=f9e41]: هر بخش از خط باید در ارتباط با بخش‌های دیگر و نیازهای محل پروژه بررسی شود. فضای در دسترس، زیرساخت‌ها، نگهداری و محدوده‌ی خدمات موردنیاز، کنار مشخصات محصول و خوراک، تصویر کامل‌تری از مسئله می‌سازند.
+            - region [ref=f9e42]:
+              - heading "برای گفت‌وگوی فنی چه چیزهایی آماده کنیم؟" [level=2] [ref=f9e43]
+              - paragraph [ref=f9e44]: شرح محصول هدف، اطلاعات موجود درباره‌ی ماده‌ی اولیه، وضعیت محل اجرا و پرسش‌های باز پروژه، شروع مناسبی برای ارزیابی هستند. هر داده‌ی ناموجود را بهتر است به‌عنوان موضوع نیازمند بررسی ثبت کنیم، نه اینکه برای آن عددی فرضی در نظر بگیریم.
+          - region [ref=f9e45]:
+            - heading "برای بررسی نیاز پروژه" [level=2] [ref=f9e46]
+            - paragraph [ref=f9e47]: با پالپ ایران درباره‌ی طراحی، ساخت، نصب و راه‌اندازی خطوط تولید گفت‌وگو کنید.
+            - link "راه‌های ارتباطی" [ref=f9e48] [cursor=pointer]:
+              - /url: index.html#footer-section
+          - region [ref=f9e49]:
+            - heading "مطالب مرتبط" [level=2] [ref=f9e50]
+            - generic [ref=f9e51]:
+              - link "چطور ماده‌ی اولیه را در ارزیابی خط در نظر بگیریم؟" [ref=f9e52] [cursor=pointer]:
+                - /url: blog.html?article=feedstock
+              - link "پیش از ارزیابی ماشین‌آلات چه اطلاعاتی آماده کنیم؟" [ref=f9e53] [cursor=pointer]:
+                - /url: blog.html?article=evaluation
+        - complementary [ref=f9e54]:
+          - link "بازگشت به فهرست مطالب" [ref=f9e55] [cursor=pointer]:
+            - /url: blogs.html
+            - generic [aria-hidden] [ref=f9e56]: →
+            - text: بازگشت به فهرست مطالب
+          - navigation [ref=f9e57]:
+            - heading "در این مقاله" [level=2] [ref=f9e58]
+            - list [ref=f9e59]:
+              - listitem [ref=f9e60]:
+                - link "ابتدا محصول موردنظر را روشن کنید" [ref=f9e61] [cursor=pointer]:
+                  - /url: "#article-section-1"
+              - listitem [ref=f9e62]:
+                - link "ماده‌ی اولیه را در کنار فرایند ببینید" [ref=f9e63] [cursor=pointer]:
+                  - /url: "#article-section-2"
+              - listitem [ref=f9e64]:
+                - link "ماشین‌آلات را به‌صورت یک زنجیره بررسی کنید" [ref=f9e65] [cursor=pointer]:
+                  - /url: "#article-section-3"
+              - listitem [ref=f9e66]:
+                - link "برای گفت‌وگوی فنی چه چیزهایی آماده کنیم؟" [ref=f9e67] [cursor=pointer]:
+                  - /url: "#article-section-4"
+  - contentinfo [ref=f9e68]:
+    - link "پالپ ایران" [ref=f9e69] [cursor=pointer]:
+      - /url: index.html
+      - generic [ref=f9e70]: پالپ
+      - strong [ref=f9e71]: ایران
+    - link "بازگشت به وبلاگ" [ref=f9e72] [cursor=pointer]:
+      - /url: blogs.html

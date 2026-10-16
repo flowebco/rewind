@@ -1,0 +1,84 @@
+<svg class="timeline-svg" viewBox="0 0 60 800" xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <filter id="pressed-inner" x="-20%" y="-2%" width="140%" height="104%">
+                <feOffset dx="2" dy="2" in="SourceAlpha" result="offDark" />
+                <feGaussianBlur stdDeviation="2.5" in="offDark" result="blurDark" />
+                <feComposite operator="out" in="SourceAlpha" in2="blurDark" result="invDark" />
+                <feFlood flood-color="rgba(95,157,231,0.7)" result="colorDark" />
+                <feComposite operator="in" in="colorDark" in2="invDark" result="shadowDark" />
+                <feOffset dx="-2" dy="-2" in="SourceAlpha" result="offLight" />
+                <feGaussianBlur stdDeviation="2.5" in="offLight" result="blurLight" />
+                <feComposite operator="out" in="SourceAlpha" in2="blurLight" result="invLight" />
+                <feFlood flood-color="rgba(255,255,255,1)" result="colorLight" />
+                <feComposite operator="in" in="colorLight" in2="invLight" result="shadowLight" />
+                <feMerge>
+                  <feMergeNode in="shadowDark" />
+                  <feMergeNode in="shadowLight" />
+                </feMerge>
+              </filter>
+              <clipPath id="liquid-clip">
+                <path
+                  d="M 30,61 A 19 19 0 0 1 33,98.762 L 33,221.238 A 19 19 0 0 1 33,258.762 L 33,381.238 A 19 19 0 0 1 33,418.762 L 33,541.238 A 19 19 0 0 1 33,578.762 L 33,701.238 A 19 19 0 0 1 30,739 A 19 19 0 0 1 27,701.238 L 27,578.762 A 19 19 0 0 1 27,541.238 L 27,418.762 A 19 19 0 0 1 27,381.238 L 27,258.762 A 19 19 0 0 1 27,221.238 L 27,98.762 A 19 19 0 0 1 30,61 Z" />
+              </clipPath>
+            </defs>
+            <path fill="var(--bg)"
+              d="M 30,58 A 22 22 0 0 1 36,101.166 L 36,218.834 A 22 22 0 0 1 36,261.166 L 36,378.834 A 22 22 0 0 1 36,421.166 L 36,538.834 A 22 22 0 0 1 36,581.166 L 36,698.834 A 22 22 0 0 1 30,742 A 22 22 0 0 1 24,698.834 L 24,581.166 A 22 22 0 0 1 24,538.834 L 24,421.166 A 22 22 0 0 1 24,378.834 L 24,261.166 A 22 22 0 0 1 24,218.834 L 24,101.166 A 22 22 0 0 1 30,58 Z" />
+            <path class="timeline-liquid" clip-path="url(#liquid-clip)" fill="none" stroke="var(--accent)"
+              stroke-width="38" stroke-linecap="round" d="M 30,61 L 30,739" />
+            <path fill="white" filter="url(#pressed-inner)" style="pointer-events: none;"
+              d="M 30,58 A 22 22 0 0 1 36,101.166 L 36,218.834 A 22 22 0 0 1 36,261.166 L 36,378.834 A 22 22 0 0 1 36,421.166 L 36,538.834 A 22 22 0 0 1 36,581.166 L 36,698.834 A 22 22 0 0 1 30,742 A 22 22 0 0 1 24,698.834 L 24,581.166 A 22 22 0 0 1 24,538.834 L 24,421.166 A 22 22 0 0 1 24,378.834 L 24,261.166 A 22 22 0 0 1 24,218.834 L 24,101.166 A 22 22 0 0 1 30,58 Z" />
+            <g transform="translate(30, 80)">
+              <g class="tl-icon" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <g transform="translate(-12, -12)">
+                  <path
+                    d="M15.707 21.293a1 1 0 0 1-1.414 0l-1.586-1.586a1 1 0 0 1 0-1.414l5.586-5.586a1 1 0 0 1 1.414 0l1.586 1.586a1 1 0 0 1 0 1.414z" />
+                  <path
+                    d="m18 13-1.375-6.874a1 1 0 0 0-.746-.776L3.235 2.028a1 1 0 0 0-1.207 1.207L5.35 15.879a1 1 0 0 0 .776.746L13 18" />
+                  <path d="m2.3 2.3 7.286 7.286" />
+                  <circle cx="11" cy="11" r="2" />
+                </g>
+              </g>
+            </g>
+            <g transform="translate(30, 240)">
+              <g class="tl-icon" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <g transform="translate(-12, -12)">
+                  <path
+                    d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z" />
+                </g>
+              </g>
+            </g>
+            <g transform="translate(30, 400)">
+              <g class="tl-icon" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <g transform="translate(-12, -12)">
+                  <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+                  <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09" />
+                  <path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z" />
+                  <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05" />
+                </g>
+              </g>
+            </g>
+            <g transform="translate(30, 560)">
+              <g class="tl-icon" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <g transform="translate(-12, -12)">
+                  <path
+                    d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526" />
+                  <circle cx="12" cy="8" r="6" />
+                </g>
+              </g>
+            </g>
+            <g transform="translate(30, 720)">
+              <g class="tl-icon" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <g transform="translate(-12, -12)">
+                  <path
+                    d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+                  <path d="m9 12 2 2 4-4" />
+                </g>
+              </g>
+            </g>
+          </svg>
