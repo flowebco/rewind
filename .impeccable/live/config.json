@@ -1,0 +1,7 @@
+{
+  "files": ["*.html"],
+  "exclude": [".impeccable/**", ".agents/**", ".playwright-mcp/**"],
+  "insertBefore": "</body>",
+  "commentSyntax": "html",
+  "cspChecked": true
+}

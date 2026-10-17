@@ -1,0 +1,11 @@
+# impeccable live-mode session artifacts (regenerated per session)
+.impeccable-engine/
+.impeccable/live/server.json
+.impeccable/live/inject-journal.json
+.impeccable/live/roots.json
+.impeccable/live/sessions/
+.impeccable/live/annotations/
+.impeccable/live/*.log
+
+# tooling caches
+.playwright-mcp/
