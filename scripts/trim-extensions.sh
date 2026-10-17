@@ -13,12 +13,35 @@
 # Nothing is deleted: removed extensions are moved to $BACKUP and
 # `restore` puts them back.
 #
-# Usage: trim-extensions.sh {status|trim|restore}
+# THERE ARE TWO EXTENSION DIRECTORIES and you must trim BOTH:
+#
+#   /tmp/.vscode/cli/servers/*/server/extensions   bundled, ships with the server
+#   /tmp/.vscode-server/extensions                 user/gallery installs
+#
+# The second one is the dangerous one. VS Code silently auto-installs
+# github.copilot-chat there (~76 MB) when the connecting client has a chat
+# session open. It then activates on every extension host start
+# (activationEvent 'onChatSession:claude-code'), fails to authenticate
+# (GitHubLoginFailed, because the remote session has no Copilot login), fails to
+# find @vscode/ripgrep (genuinely absent from the server tree), and the host dies
+# with "FATAL ERROR: ... JavaScript heap out of memory" -> SIGABRT. VS Code
+# restarts it, and it loops every ~25 seconds, each cycle spawning fresh
+# processes, until the 1 GiB cgroup is exhausted and the tunnel itself aborts on
+# a 20 KB allocation. Observed live: extension hosts 17300, 20919, 20941, 20960,
+# 21033, 21108 in four minutes.
+#
+# Usage: trim-extensions.sh {status|trim|trim-user|restore}
 
 set -eu
 
 BACKUP=${BACKUP:-/tmp/vsc-extensions-backup}
+USER_BACKUP=${USER_BACKUP:-/tmp/vscode-user-extensions-backup}
+USER_EXT_DIR=/tmp/.vscode-server/extensions
 KEEP="git git-base github-authentication simple-browser tunnel-forwarding node_modules"
+# Nothing in the gallery directory is worth keeping in this sandbox: the user
+# edits over a tunnel and does not need Copilot Chat, and Copilot Chat here is
+# actively fatal (see the header). Override USER_KEEP to keep something.
+USER_KEEP=${USER_KEEP:-}
 
 server_extensions_dir() {
   # Newest server dir wins if several builds are cached.
@@ -37,6 +60,16 @@ is_kept() {
 }
 
 do_status() {
+  echo "user/gallery dir: $USER_EXT_DIR"
+  if [ -d "$USER_EXT_DIR" ]; then
+    echo "  installed    : $(ls "$USER_EXT_DIR" 2>/dev/null | grep -v '^extensions.json$' | wc -l | tr -d ' ')"
+    echo "  on disk      : $(du -sh "$USER_EXT_DIR" 2>/dev/null | cut -f1)"
+    echo "  backed up    : $(ls "$USER_BACKUP" 2>/dev/null | wc -l | tr -d ' ') in $USER_BACKUP"
+    ls "$USER_EXT_DIR" 2>/dev/null | grep -v '^extensions.json$' | sed 's/^/    - /'
+  else
+    echo "  (absent)"
+  fi
+  echo
   d=$(server_extensions_dir)
   echo "extensions dir : $d"
   echo "active         : $(count_active)"
@@ -48,7 +81,38 @@ do_status() {
   for e in $(list_active); do is_kept "$e" || echo "  $e"; done
 }
 
+# Disable gallery-installed extensions by moving them out AND emptying the
+# manifest, because VS Code reads extensions.json to decide what to activate.
+# Moving the directory alone leaves a manifest entry pointing at nothing.
+do_trim_user() {
+  if [ ! -d "$USER_EXT_DIR" ]; then
+    echo "no $USER_EXT_DIR -- nothing gallery-installed"
+    return 0
+  fi
+  mkdir -p "$USER_BACKUP"
+  n=0
+  for path in "$USER_EXT_DIR"/*; do
+    [ -e "$path" ] || continue
+    e=$(basename "$path")
+    [ "$e" = "extensions.json" ] && continue
+    keep=0
+    for k in $USER_KEEP; do [ "$e" = "$k" ] && keep=1; done
+    [ "$keep" = 1 ] && continue
+    mv "$path" "$USER_BACKUP"/ && n=$((n+1))
+  done
+  # Back up the manifest once, then empty it.
+  if [ -f "$USER_EXT_DIR/extensions.json" ] && [ ! -f "$USER_BACKUP/extensions.json.orig" ]; then
+    cp "$USER_EXT_DIR/extensions.json" "$USER_BACKUP/extensions.json.orig"
+  fi
+  echo '[]' > "$USER_EXT_DIR/extensions.json"
+  echo "moved $n gallery extension(s) to $USER_BACKUP; extensions.json emptied"
+  echo "VS Code logs 'Extensions removed from another source' and rebuilds the host."
+  echo "The client may re-install Copilot Chat on its next connect -- re-run this if"
+  echo "the extension host starts crash-looping again."
+}
+
 do_trim() {
+  do_trim_user
   d=$(server_extensions_dir)
   mkdir -p "$BACKUP"
   moved=0
@@ -83,12 +147,29 @@ do_restore() {
     [ -e "$path" ] || continue
     mv "$path" "$d"/ && n=$((n+1))
   done
-  echo "restored $n extensions; active now: $(count_active)"
+  echo "restored $n bundled extensions; active now: $(count_active)"
+  if [ -d "$USER_BACKUP" ]; then
+    mkdir -p "$USER_EXT_DIR"
+    m=0
+    for path in "$USER_BACKUP"/*; do
+      [ -e "$path" ] || continue
+      b=$(basename "$path")
+      [ "$b" = "extensions.json.orig" ] && continue
+      mv "$path" "$USER_EXT_DIR"/ && m=$((m+1))
+    done
+    if [ -f "$USER_BACKUP/extensions.json.orig" ]; then
+      cp "$USER_BACKUP/extensions.json.orig" "$USER_EXT_DIR/extensions.json"
+      echo "restored $m gallery extension(s) and the original manifest"
+    else
+      echo "restored $m gallery extension(s); rebuild the manifest by reinstalling"
+    fi
+  fi
 }
 
 case "${1:-status}" in
-  status)  do_status ;;
-  trim)    do_trim ;;
-  restore) do_restore ;;
-  *) echo "usage: $0 {status|trim|restore}"; exit 2 ;;
+  status)    do_status ;;
+  trim)      do_trim ;;
+  trim-user) do_trim_user ;;
+  restore)   do_restore ;;
+  *) echo "usage: $0 {status|trim|trim-user|restore}"; exit 2 ;;
 esac
