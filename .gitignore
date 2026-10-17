@@ -9,3 +9,8 @@
 
 # tooling caches
 .playwright-mcp/
+
+# sandbox-only reverse proxy that makes impeccable live mode work over an
+# HTTPS devtunnels origin (rewrites live.js hardcoded localhost URLs in flight).
+# Not part of the product; the running copy lives at /tmp/liveproxy.py.
+liveproxy.py
