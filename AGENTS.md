@@ -46,6 +46,7 @@ OOM می‌شود — در بدترین حالت حتی `echo ok` هم با `spa
 
 **قاعده‌ها:**
 - قبل از هر بار اتصال تونل، `sh scripts/trim-extensions.sh status` را اجرا کن.
+  این **هر دو** دایرکتوری افزونه را نشان می‌دهد (بخش ۹٫۵ ج را ببین).
 - هرگز اجازه نده چند تب vscode.dev همزمان وصل شوند. هر اتصال مجدد یک
   `extensionHost` جدید می‌سازد که هیچ‌وقت آزاد نمی‌شود؛ دقیقاً همین باعث سقوط‌های
   پیاپی شد (۷ کانال همزمان → ۱۶ پروسه).
@@ -366,6 +367,41 @@ a0=$(tr '\0' '\n' < /proc/$pid/cmdline | head -1)
 a1=$(tr '\0' '\n' < /proc/$pid/cmdline | sed -n 2p)
 case "$a0" in */code) [ "$a1" = tunnel ] && echo "تونل واقعی $pid" ;; esac
 ```
+
+### ج) دو دایرکتوری افزونه وجود دارد — و دومی کشنده است
+
+این مهم‌ترین کشف این session است و دیر پیدا شد.
+
+```
+/tmp/.vscode/cli/servers/*/server/extensions   ← bundled، همراه سرور
+/tmp/.vscode-server/extensions                 ← نصب‌های user/gallery
+```
+
+`trim-extensions.sh` در ابتدا فقط اولی را trim می‌کرد. ولی VS Code **خودکار و
+بی‌صدا** `github.copilot-chat` (۷۶ MB) را در دومی نصب می‌کند، وقتی کلاینتِ
+وصل‌شونده یک chat session باز دارد. بعد این اتفاق می‌افتد:
+
+1. روی هر شروعِ extension host فعال می‌شود (`activationEvent: 'onChatSession:claude-code'`)
+2. نمی‌تواند authenticate شود → `GitHubLoginFailed` (چون نشستِ remote لاگین Copilot ندارد)
+3. `@vscode/ripgrep` را پیدا نمی‌کند → ENOENT واقعاً وجود ندارد در درخت سرور
+4. هاست می‌میرد: `FATAL ERROR: ... JavaScript heap out of memory` → SIGABRT
+5. VS Code دوباره راهش می‌اندازد و **حلقه هر ~۲۵ ثانیه تکرار می‌شود**
+
+نتیجه‌ی مشاهده‌شده: شش extension host در چهار دقیقه
+(`17300 → 20919 → 20941 → 20960 → 21033 → 21108`)، تا اینکه سقف ۱ GiB پر شد و
+**خودِ تونل** روی یک تخصیص ۲۰ کیلوبایتی `Aborted` شد.
+
+راه‌حل: `sh scripts/trim-extensions.sh trim-user` — افزونه را به
+`/tmp/vscode-user-extensions-backup` منتقل می‌کند **و `extensions.json` را خالی
+می‌کند**. خالی کردن manifest ضروری است، چون VS Code از روی آن تصمیم می‌گیرد چه
+چیزی را فعال کند؛ فقط جابه‌جا کردن پوشه یک ورودی معلق باقی می‌گذارد.
+
+بعد از حذف، VS Code در لاگ می‌نویسد `Extensions removed from another source` و
+یک هاست تازه و سالم می‌سازد. علامت سلامت: pid ثابتِ extension host در چند بررسی
+پشت‌سرهم، و `cgroup` تخت.
+
+⚠️ کلاینت ممکن است در اتصال بعدی **دوباره** نصبش کند. اگر extension host شروع به
+crash-loop کرد، اول این را بررسی کن.
 
 ### ت) ترتیب تونل: اول authorize، بعد URL
 

@@ -41,7 +41,7 @@ sh scripts/restore.sh
 sh scripts/restore.sh --status
 ```
 
-### سه چیزی که اگر ندانی، حتماً خراب می‌کنی
+### چهار چیزی که اگر ندانی، حتماً خراب می‌کنی
 
 1. **سقف حافظه ۱ گیگابایت است.** یک VS Code Server متصل حتی با ۶ افزونه حدود
    ۷۰۰–۷۵۰ MB هزینه دارد. با ۳۶ افزونه به ۸۱۶ MB و ۱۶ پروسه می‌رسد و کل
@@ -62,6 +62,21 @@ sh scripts/restore.sh --status
    نمی‌فرستد، پس cross-origin هم ممکن نیست. `scripts/liveproxy.py` هر دو را از یک
    origin سرو می‌کند و `live.js` را در حین سرو بازنویسی می‌کند. **فقط پورت ۸۰۸۰
    را forward کن.**
+
+4. **دو دایرکتوری افزونه وجود دارد و فقط trim کردن اولی کافی نیست.** VS Code
+   بی‌صدا `github.copilot-chat` را در `/tmp/.vscode-server/extensions` نصب می‌کند
+   (۷۶ MB). آن افزونه در این محیط نمی‌تواند authenticate شود، `@vscode/ripgrep`
+   را هم پیدا نمی‌کند، و extension host را وارد یک crash-loop بیست‌وپنج‌ثانیه‌ای
+   می‌کند که در نهایت کل کانتینر را OOM می‌کند — و خودِ تونل روی یک تخصیص
+   ۲۰ کیلوبایتی می‌میرد. راه‌حل:
+
+   ```sh
+   sh scripts/trim-extensions.sh trim-user
+   ```
+
+   این هم پوشه را منتقل می‌کند و هم `extensions.json` را خالی می‌کند؛ خالی کردن
+   manifest ضروری است چون VS Code از روی آن تصمیم می‌گیرد چه را فعال کند.
+   جزئیات و شواهد در `AGENTS.md` بخش ۹٫۵ ج.
 
 ### بقیه‌ی اسناد
 
