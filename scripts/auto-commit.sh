@@ -17,7 +17,7 @@
 # Usage: sh scripts/auto-commit.sh "commit message" [file ...]
 #        sh scripts/auto-commit.sh --dry-run
 # Run from the repo root. With no file list it considers the product surface:
-#   *.html  css/*.css  js/*.js  DESIGN.md  PRODUCT.md
+#   *.html  css/*.css  js/*.js  DESIGN.md  PRODUCT.md  README.md  AGENTS.md
 # It never stages .impeccable session state, the engine cache, or scripts/.
 
 set -eu
@@ -32,7 +32,7 @@ G="git -C $REPO"
   exit 2
 }
 
-DEFAULT_FILES="index.html blogs.html blog.html css/styles.css css/blog.css js/app.js js/blog.js DESIGN.md PRODUCT.md"
+DEFAULT_FILES="index.html blogs.html blog.html css/styles.css css/blog.css js/app.js js/blog.js DESIGN.md PRODUCT.md README.md AGENTS.md"
 AUTHOR_NAME=${GIT_AUTHOR_NAME:-impeccable-live}
 AUTHOR_MAIL=${GIT_AUTHOR_EMAIL:-live@local}
 

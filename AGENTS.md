@@ -5,6 +5,21 @@
 
 ---
 
+## ۰. اولین قدم: `sh scripts/restore.sh`
+
+اگر این مخزن را تازه import کرده‌ای، **هیچ‌چیز را دستی نصب نکن**. یک دستور کل
+فرایند را از صفر تا «live mode در حال اجرا» برمی‌گرداند و هر قدم دلیلش را داخل
+خودش مستند کرده است:
+
+```sh
+sh scripts/restore.sh            # بازسازی کامل
+sh scripts/restore.sh --status   # فقط گزارش، چیزی را عوض نمی‌کند
+```
+
+`README.md` خلاصه‌ی سریع است؛ این فایل جزئیات و دلیل‌ها.
+
+---
+
 ## ۱. محیط: سه محدودیتی که اگر ندانی، کارت را خراب می‌کند
 
 ### ۱.۱ سقف حافظه ۱ گیگابایت — مهم‌ترین محدودیت
@@ -69,7 +84,8 @@ OOM می‌شود — در بدترین حالت حتی `echo ok` هم با `spa
 
 | اسکریپت | کار |
 |---|---|
-| `setup.sh` | راه‌اندازی کامل: حافظه، CLI، انجین، کانفیگ، حذف افزونه‌ها، پروکسی، live boot. با `--status` فقط گزارش می‌دهد. |
+| `restore.sh` | **نقطه‌ی ورود اصلی.** بازسازی کامل از «تازه clone شده» تا «live mode در حال اجرا»: حافظه، CLI، انجین با sha256، کانفیگ، trim افزونه‌ها، پروکسی، live boot، و دستورالعمل تونل. با `--status` فقط گزارش می‌دهد. چهار تله‌ی بخش ۹٫۵ داخلش هندل شده. |
+| `setup.sh` | نسخه‌ی قدیمی‌ترِ همان کار. `restore.sh` را ترجیح بده. |
 | `trim-extensions.sh` | `{status\|trim\|restore}` — افزونه‌های سرور VS Code را به ۶ مورد لازم کم می‌کند. **چیزی حذف نمی‌شود**؛ به `/tmp/vsc-extensions-backup` منتقل می‌شوند. |
 | `tunnel-service.sh` | `{start\|stop\|restart\|status\|log}` — جایگزین `code tunnel service install`. |
 | `auto-commit.sh` | commit تغییرات پذیرفته‌شده بدون وارد کردن تگ موقت live-mode. |
@@ -266,8 +282,21 @@ echo 'https://<USER>:<PAT>@github.com' >> ~/.git-credentials
 | `e295a01` | کانفیگ live mode، `.gitignore`، untrack کردن `server.json`، `chmod +x` لانچر |
 | `9d349cd` | هیرو به «میز مطالعه‌ی وسط‌چین» (از session `4e3b18bf`) |
 | `cccb388` | هیرو به «مسیر خواندن + ریل اقدام» (از session `5d3b39f5`) |
+| `d7ae072` | `scripts/` و `AGENTS.md` |
+| (بعدی) | `README.md` به‌عنوان نقطه‌ی ورود، `scripts/restore.sh`، و بخش ۹٫۵ |
 
 دو round هم **رد** شد: `delight` روی هیرو، و `bolder` با گلس تیره روی CTA.
+
+**جابجایی مخزن:** کار ابتدا در `/home/node/rewind` شروع شد، بعد به
+`"$ARENA_WORKSPACE"/rewind` منتقل شد چون داخل workspace پایدار و ریشه‌ی تونل بود — و بعد
+**دوباره به `/home/node/rewind` برگشت**، چون کشف شد `"$ARENA_WORKSPACE"` در `ls /home`
+ظاهر نمی‌شود و VS Code Server هم نمی‌تواند ببیندش (بخش ۹٫۵ الف). کپی قدیمیِ
+`/home/node/rewind` به `/home/node/rewind-STALE-2026-10-17` منتقل شد و از تاریخچه‌ی
+git آن در `/tmp/rewind-node-OLD-git-backup.tgz` پشتیبان گرفته شد. هیچ کار محصولی
+در آن کپی نبود که از دست برود.
+
+⚠️ اگر یک کپی در `"$ARENA_WORKSPACE"/rewind` هم دیدی، **کهنه است**. مسیر زنده
+`/home/node/rewind` است.
 
 اسکن `detect --json --scope layout` الان **۰ finding** است. قبلاً یک
 `nested-cards` («Card inside card (search)») داشت که با حذف border/background/
@@ -293,10 +322,70 @@ impeccable آن بخش را به‌عنوان نقص می‌بیند و برمی
 
 ---
 
+## ۹٫۵. چهار تله‌ای که بعداً کشف شدند
+
+این‌ها را دیر یاد گرفتم و هر کدام یک بار کار را خراب کرد.
+
+### الف) `"$ARENA_WORKSPACE"` اصلاً در `/home` فهرست نمی‌شود
+
+```
+os.listdir('/home')          → ['node']     ← فقط node
+os.path.isdir('"$ARENA_WORKSPACE"')  → True         ← ولی با مسیر مطلق می‌شود رسید
+is symlink                   → False
+inode "$ARENA_WORKSPACE" = 1506  <  inode /home = 1334133   ← از فایل‌سیستم دیگری mount شده
+```
+
+یعنی workspace پایدارِ agent یک mount جداست که در فهرست والد دیده نمی‌شود.
+**VS Code Server هم در همان namespace است، پس کاربر هرگز نمی‌تواند آن را ببیند.**
+نتیجه: اگر کاربر باید فایل‌ها را در VS Code ببیند و ویرایش کند، مخزن باید زیر
+`/home/node/...` باشد، نه `"$ARENA_WORKSPACE"/...`. تونل می‌تواند URL یک مسیر
+`"$ARENA_WORKSPACE"` را چاپ کند (چون CLI همان‌جا اجرا شده) ولی آن پوشه در explorer کاربر
+باز نمی‌شود.
+
+### ب) `server.json` کهنه باعث می‌شود `impeccable live` دروغ بگوید
+
+اگر `.impeccable/live/server.json` به pid مرده اشاره کند، `impeccable live`
+خروجی `ok: true` و `serverPort: 8400` می‌دهد **بدون اینکه واقعاً هلپری بالا
+بیاورد**. بعد پورت ۸۴۰۰ بسته است و پروکسی `502 helper unreachable` برمی‌گرداند.
+راه‌حل: قبل از boot، اگر pid داخل `server.json` در `/proc` نبود، فایل را پاک کن.
+`restore.sh` این را خودش انجام می‌دهد.
+
+### پ) دو تونل همزمان = توکن برای همیشه باطل
+
+اگر دو پروسه‌ی تونل با یک نام همزمان ثبت‌نام کنند، سمت سرویس نشست باطل می‌شود.
+علامتش: `token.json` هنوز ۱۴۲ بایت است و سر جایش، ولی `tunnel user show` می‌گوید
+`not logged in`. تنها راه نجات، authorize کردن یک کد دستگاه جدید است.
+
+و بدتر: **الگوی تشخیص پروسه‌ی خودم باعث این مشکل شد.** `case` روی رشته‌ی کامل
+cmdline با الگوی `*code*tunnel*` نوشته بودم، و چون دستور بررسیِ خودم هم آن رشته
+را در خود داشت، پروسه‌ی موقتِ bash خودم را «تونل رقیب» تشخیص می‌دادم و می‌کشتم.
+تشخیص درست بر اساس argv است:
+
+```sh
+a0=$(tr '\0' '\n' < /proc/$pid/cmdline | head -1)
+a1=$(tr '\0' '\n' < /proc/$pid/cmdline | sed -n 2p)
+case "$a0" in */code) [ "$a1" = tunnel ] && echo "تونل واقعی $pid" ;; esac
+```
+
+### ت) ترتیب تونل: اول authorize، بعد URL
+
+تا وقتی `"tunnel":"Connected"` را در `tunnel status` **با چشم ندیده‌ای**، آدرس
+`https://vscode.dev/tunnel/<name>/<path>` را به کاربر نده. قبل از ثبت‌نام، آن URL
+به هیچ چیز اشاره نمی‌کند و کاربر می‌گوید «لینک کانکت نشد». ترتیب درست:
+
+1. `tunnel-service.sh start`
+2. کد دستگاه را از لاگ بخوان و به کاربر بده
+3. کاربر authorize کند
+4. `tunnel status` → باید `"tunnel":"Connected"` و `name`/`tunnel_id` غیر null باشد
+5. **حالا** URL را بده
+
+---
+
 ## ۱۰. چک‌لیست شروع
 
 ```sh
-sh scripts/setup.sh --status          # وضعیت فعلی، چیزی را عوض نمی‌کند
+sh scripts/restore.sh --status        # وضعیت فعلی، چیزی را عوض نمی‌کند
+sh scripts/setup.sh --status          # (قدیمی‌تر؛ restore.sh را ترجیح بده)
 sh scripts/trim-extensions.sh status  # باید ۶ فعال باشد
 sh scripts/tunnel-service.sh status   # باید Connected باشد
 sh scripts/auto-commit.sh --dry-run   # چه چیزی commit می‌شد

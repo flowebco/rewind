@@ -13,3 +13,12 @@
 # Ignore a stray root-level copy of the proxy. The canonical one is
 # scripts/liveproxy.py and IS tracked; setup.sh runs it from there.
 /liveproxy.py
+
+# VS Code CLI binary: 34 MB, downloaded by scripts/restore.sh on demand.
+# Never commit it -- it is platform-specific and reproducible.
+/code
+/code.tar.gz
+/vscode_cli.tar.gz
+
+# sandbox-only state that must not be committed
+*.log
