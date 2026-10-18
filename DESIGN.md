@@ -4,6 +4,7 @@ description: Persian industrial guidance for pulp production lines and project e
 colors:
   accent: "#e75a08"
   accent-deep: "#c95e00"
+  accent-ink: "#9c4800"
   background: "#e5edf5"
   text-primary: "#2d3748"
   text-secondary: "#5b6b80"
@@ -79,6 +80,8 @@ The palette is a cool blue-gray industrial ground with dark slate text and a res
 - **Signal Orange** (`#e75a08`): Brand emphasis, large display accents, and the rotating CTA ring. Measures 3.03:1 against the ground, so it is decoration and large text only.
 - **Deep Orange** (`#c95e00`, `--accent-darken`): Large accent headings and icon accents. Measures 3.49:1 against the ground, which clears the 3:1 bar for large text (24px+, or 18.66px bold) and for non-text elements, and fails the 4.5:1 bar below that. Do not use it for small text.
 - **Accent Ink** (`#9c4800`, `--accent-ink`): The orange to use for **small** accent text — navigation, labels, chips, kickers, hover states on link-sized type. Measures 5.32:1 against the ground, clearing AA with margin. Chosen over `#a94e00` (4.70:1) for headroom.
+
+`--accent-ink` is a palette addition, not drift: it exists because `--accent-darken` cannot legally be used at label sizes, and before it was introduced the code used it there anyway in fourteen places.
 
 ### Neutral
 - **Blue-Gray Ground** (`#e5edf5`): Shared page and raised-component surface.
@@ -197,6 +200,38 @@ Components sit on the same `--bg` surface. Use `--radius: 24px` for major panels
 - **Style:** Shared-ground field with a 16px radius and `var(--pressed)` inset shadow.
 - **Focus:** Keep the global high-contrast `:focus-visible` outline; do not remove browser focus indication.
 - **Search:** Filter article cards live and compose with the selected category; announce the result count and a recoverable empty state.
+
+### Glass Button (`.glass-btn`)
+
+A "wet glass" control in `css/styles.css`, used for the consultation CTA in the
+blog rail. Translucent box, blurred inner rim and corner sheen pushed through a
+high-contrast filter, which is what makes the edge read as liquid.
+
+Three rules keep it inside this system rather than bolted onto it:
+
+- **The contrast filter is confined to `.glass-fx`**, an absolutely positioned
+  layer with no text in it. Putting `filter: contrast(3)` on a page-level wrapper
+  creates a containing block that silently breaks `position: fixed` and `sticky`
+  inside it, and it would run the label's and icon's drop-shadows through
+  contrast(3) and turn them into black halos.
+- **No black.** The reference used a hard black inner outline and a black drop
+  shadow; both are replaced with `--shadow-dark`, the site's own blue, at low
+  alpha. Radius is the documented `capsule` step, not `9999px`.
+- **Contrast is measured, not assumed.** Label `--text-primary` = 10.14:1 on the
+  ground. The white glyph on the `--accent` disc = 3.58:1, which clears the 3:1
+  bar for a non-text element. The `:active` colour is `--text-primary`, not pure
+  black.
+
+Sizing is fluid: `--glass-w: clamp(15rem, 100%, 17.5rem)`, height
+`clamp(3.25rem, 9vw, 3.75rem)` so it never drops below the 48px touch floor, and
+a 400px breakpoint where it fills its container. The chevron is the reference's
+own path mirrored with `scaleX(-1)`, because this site is RTL and "onward"
+points left. Motion honours `prefers-reduced-motion`.
+
+Known limit: `backdrop-filter` has nothing to sample on a flat pale ground, so the
+"glass" reads mostly from the blurred rim and sheen. It shows best where the
+surface behind it varies — the rail card's white-to-orange gradient, for
+instance. Do not expect a frosted-window look over a uniform background.
 
 ### Navigation
 - **Style:** Compact raised masthead, Persian RTL links, and a softly highlighted current page.
