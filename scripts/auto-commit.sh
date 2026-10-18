@@ -53,20 +53,45 @@ else
   if [ "$#" -gt 0 ]; then FILES="$*"; else FILES="$DEFAULT_FILES"; fi
 fi
 
-# Emit the file with the inject tag removed, to stdout.
+# Live-mode guard: variants/carbonize wrappers are ephemeral (display: contents
+# shows all 5 panes outside a session). Committing one baked the dceb938c
+# 5× duplication into main and made every future live-wrap fail with
+# element_ambiguous. Refuse the commit until the session is finished.
+for f in $FILES; do
+  [ -f "$REPO/$f" ] || continue
+  if grep -q "impeccable-variants-start\|impeccable-carbonize-start" "$REPO/$f" 2>/dev/null; then
+    echo "auto-commit: $f contains a live variants/carbonize wrapper -- finish or discard the live session first (impeccable live-complete) and run again." >&2
+    echo "Refusing to commit ephemeral live scaffolding." >&2
+    exit 2
+  fi
+done
+
+# Emit the file with live-mode scaffolding removed, to stdout.
+# Strips (1) the dev-only live-inject tag and (2) any variants/carbonize
+# wrapper that is only valid while `impeccable live` is cycling. The wrapper
+# uses `display: contents` so outside a session all 5 panes are visible at
+# once -- exactly the "5 identical cards" bug that was committed as dceb938c
+# and then made every future `live-wrap` fail with `element_ambiguous`.
+# We do not try to auto-unwrap to "original" here: the correct fix is to
+# finish the session (accept/discard + live-complete), not to guess.
 descaffold() {
   python3 - "$REPO/$1" "$1" <<'PY'
 import re, sys
 path, rel = sys.argv[1], sys.argv[2]
 s = open(path, encoding='utf-8').read()
-# Only HTML that actually carries the tag as a live artifact. Without this guard
-# the regex also ate a FENCED EXAMPLE of the tag out of AGENTS.md, so a commit
-# went out with three lines of documentation silently missing while the working
-# file still looked correct -- index-based staging means the damage is invisible
-# to git status.
+# Guard the live-inject example in AGENTS.md: only strip the tag when it is a
+# real HTML page with a closing body.
 if rel.endswith('.html') and '</body>' in s:
     s = re.sub(r'[ \t]*<!-- impeccable-live-start -->.*?<!-- impeccable-live-end -->\n', '', s, flags=re.S)
     s = s.replace('\n</body>\n</html>', '\n  </body>\n</html>')
+    # Variants wrapper is ephemeral: <!-- impeccable-variants-start ID --> ... <!-- end -->
+    # and its <style data-impeccable-css>. Outside a session all 5 variants
+    # are visible, and the next scaffold fails with element_ambiguous.
+    # Carbonize is the same: must be cleaned via live-complete, not committed.
+    # Do not silently unwrap -- abort the commit so the session is finished.
+    if 'impeccable-variants-start' in s or 'impeccable-carbonize-start' in s:
+        sys.stderr.write(f"auto-commit: {rel} still contains a live variants/carbonize wrapper -- finish or discard the live session first (live-complete) and run again.\n")
+        sys.exit(2)
 sys.stdout.write(s)
 PY
 }
