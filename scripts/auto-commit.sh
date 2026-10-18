@@ -40,11 +40,17 @@ DRY=0
 [ "${1:-}" = "--dry-run" ] && { DRY=1; shift; }
 
 if [ "$DRY" = 1 ]; then
-  FILES=${*:-$DEFAULT_FILES}
+  # `$*` is empty when a message is given with no file list, and this once
+  # committed only a pre-staged file and silently dropped the markup that went
+  # with it -- leaving HEAD with new CSS and old HTML. Test the count.
+  if [ "$#" -gt 0 ]; then FILES="$*"; else FILES="$DEFAULT_FILES"; fi
 else
   MSG=${1:?usage: auto-commit.sh "commit message" [file ...]}
   shift
-  FILES=${*:-$DEFAULT_FILES}
+  # `$*` is empty when a message is given with no file list, and this once
+  # committed only a pre-staged file and silently dropped the markup that went
+  # with it -- leaving HEAD with new CSS and old HTML. Test the count.
+  if [ "$#" -gt 0 ]; then FILES="$*"; else FILES="$DEFAULT_FILES"; fi
 fi
 
 # Emit the file with the inject tag removed, to stdout.
