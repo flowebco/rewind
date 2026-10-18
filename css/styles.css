@@ -1,37 +1,17 @@
+/* One variable face replaces the five static weights that were here.
+   Upstream ships fonts/webfonts/Vazirmatn[wght].woff2 with a 100-900 wght axis;
+   it has the identical cmap (811 entries) and glyph count (1333) as the static
+   Regular, so nothing regresses, and it is 108 KB instead of 255 KB across five
+   files. The family name stays "Vazirmatn Variable" because that is what every
+   font stack in this project already asks for -- it just finally is one.
+   Bracketed filenames are avoided so the URL needs no percent-encoding. */
 @font-face {
   font-family: "Vazirmatn Variable";
+  src: url("../fonts/Vazirmatn-Variable.woff2") format("woff2 supports variations"),
+       url("../fonts/Vazirmatn-Variable.woff2") format("woff2-variations");
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
-  font-weight: 400;
-  src: url("../fonts/Vazirmatn-Regular.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Vazirmatn Variable";
-  font-style: normal;
-  font-display: swap;
-  font-weight: 500;
-  src: url("../fonts/Vazirmatn-Medium.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Vazirmatn Variable";
-  font-style: normal;
-  font-display: swap;
-  font-weight: 600;
-  src: url("../fonts/Vazirmatn-SemiBold.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Vazirmatn Variable";
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url("../fonts/Vazirmatn-Bold.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Vazirmatn Variable";
-  font-style: normal;
-  font-display: swap;
-  font-weight: 800;
-  src: url("../fonts/Vazirmatn-ExtraBold.woff2") format("woff2");
 }
 
 @property --ai-angle {

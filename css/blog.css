@@ -1154,7 +1154,7 @@
   background: var(--bg);
   box-shadow: var(--raised);
   color: var(--text-primary);
-  font-size: 1.2rem;
+  font-size: 0.95rem;
   font-weight: 700;
   text-decoration: none;
   transition: background-color var(--transition), color var(--transition), transform var(--transition), box-shadow var(--transition);
@@ -1179,7 +1179,6 @@
   background: var(--accent-darken);
   box-shadow: var(--hero);
   color: #fff;
-  font-weight: 800;
 }
 
 .featured-cta:active {

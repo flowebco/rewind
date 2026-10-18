@@ -38,7 +38,7 @@ Visitors are evaluating industrial production projects and may need help underst
 ## Evidence on Hand
 
 - Existing product and company descriptions in `index.html`.
-- Existing company logo, industrial hero image, project imagery, and locally hosted Vazirmatn font files.
+- Existing company logo, industrial hero image, project imagery, and a locally hosted Vazirmatn variable webfont.
 - No verified testimonials, named customer references, or published article corpus are present in the project.
 
 ## Product Principles

@@ -62,7 +62,7 @@ components:
 
 **Creative North Star: "راهنمای مهندسیِ لمسی"**
 
-Pulp Iran presents industrial production knowledge through a tactile, calm interface. Its Persian right-to-left layout, locally hosted Vazirmatn, blue-gray ground, orange signal color, and paired neumorphic shadows connect the editorial pages to the company site without making the reading surface feel like a control panel.
+Pulp Iran presents industrial production knowledge through a tactile, calm interface. Its Persian right-to-left layout, locally hosted Vazirmatn variable webfont, blue-gray ground, orange signal color, and paired neumorphic shadows connect the editorial pages to the company site without making the reading surface feel like a control panel.
 
 Use the raised and inset surfaces to clarify interaction and hierarchy. Keep article prose quiet and readable; reserve the stronger dimensional treatment for navigation, featured content, controls, and compact summary groups. Sample articles and archive images must be identified honestly and must not imply an executed project, named author, capacity, or performance claim.
 
@@ -91,6 +91,12 @@ The palette is a cool blue-gray industrial ground with dark slate text and a res
 **Display Font:** Vazirmatn Variable (with `system-ui`, sans-serif fallback)
 **Body Font:** Vazirmatn Variable (with `system-ui`, sans-serif fallback)
 **Label Font:** Vazirmatn Variable
+
+One `@font-face` in `css/styles.css` serves all three, from
+`fonts/Vazirmatn-Variable.woff2` with `font-weight: 100 900` on the upstream
+`wght` axis. Do not reintroduce per-weight static files: the family name says
+"Variable", and five static faces sharing it gave every weight between the five
+a synthesized or nearest-match rendering while costing 255 KB instead of 108 KB.
 
 **Character:** Clear Persian forms with weight-led hierarchy. Keep body copy comfortable and regular; use weight 700–800 to establish titles, section openers, and primary actions.
 
