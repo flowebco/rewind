@@ -15,6 +15,7 @@ live.js's hardcoded URLs to same-origin relative paths in flight. The HTML on
 disk is untouched -- the rewrite happens on the served bytes only -- so
 `impeccable live-inject` keeps working normally.
 """
+import os
 import re
 import sys
 import urllib.request
@@ -23,7 +24,7 @@ from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 
 ROOT = sys.argv[1] if len(sys.argv) > 1 else '"$ARENA_WORKSPACE"/rewind'
 PORT = int(sys.argv[2]) if len(sys.argv) > 2 else 8080
-HELPER = 'http://127.0.0.1:8400'
+HELPER = os.environ.get("IMPECCABLE_HELPER", "http://127.0.0.1:8400")
 
 # Helper endpoints to reverse-proxy. Anything not listed is served from disk.
 PROXY_PATHS = {
@@ -58,8 +59,9 @@ def patch_live_js(text):
         lambda m: "`" + m.group(1) + "`",
         text,
     )
-    # any remaining absolute localhost:8400 reference
-    text = text.replace('http://localhost:8400', '')
+    # any remaining absolute localhost reference, on whatever port the helper
+    # actually took -- it is not always 8400
+    text = re.sub(r'http://localhost:\d+', '', text)
     return text
 
 
@@ -175,7 +177,12 @@ class Handler(SimpleHTTPRequestHandler):
         except OSError:
             return super().do_GET()
         text = data.decode('utf-8', 'replace')
-        new = re.sub(r'src="http://localhost:8400(/live\.js\?[^"]*)"',
+        # The helper picks its own port (8400 normally, but it increments when
+        # that port is taken, and it did -- to 8401), so match any port. An
+        # earlier version hardcoded 8400 here and silently left the tag pointing
+        # at http://localhost:8401/... which the browser then blocked as mixed
+        # content on an HTTPS origin.
+        new = re.sub(r'src="http://localhost:\d+(/live\.js\?[^"]*)"',
                      r'src="\1"', text)
         changed = new != text
         data = new.encode('utf-8')
