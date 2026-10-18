@@ -27,6 +27,13 @@
   --text-primary: #2d3748;
   --text-secondary: #5b6b80;
   --accent-darken: #c95e00;
+  /* Accent for SMALL text. --accent-darken measures only 3.49:1 against --bg,
+     which clears the 3:1 bar for large text and non-text elements but fails the
+     4.5:1 AA bar below 18.66px bold / 24px. DESIGN.md already says not to use it
+     for small text; this token is what makes following that possible. #9c4800
+     measures 5.32:1, chosen over #a94e00 (4.70:1) for margin. Icons, fills and
+     large display headings stay on --accent-darken. */
+  --accent-ink: #9c4800;
   --accent: #e75a08;
   --radius: 24px;
   --transition: 0.4s ease-in-out;
@@ -166,7 +173,7 @@ nav a {
 }
 nav a:hover,
 nav a:focus-visible {
-  color: var(--accent-darken);
+  color: var(--accent-ink);
   background: rgba(255, 255, 255, 0.45);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
 }
@@ -264,7 +271,7 @@ main > footer {
 }
 .btn:hover,
 .btn:focus-visible {
-  color: var(--accent-darken);
+  color: var(--accent-ink);
   background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(229,237,245,0.96));
   transform: translateY(-2px);
 }
