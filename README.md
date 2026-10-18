@@ -5,7 +5,7 @@
 پسماند کشاورزی و باگاس.
 
 یک سایت **استاتیک** است: بدون build، بدون framework، بدون `package.json`.
-سه صفحه (`index.html`, `blogs.html`, `blog.html`)، دو stylesheet، دو فایل JS،
+دو صفحه (`index.html`, `blogs.html`)، دو stylesheet، دو فایل JS،
 فونت متغیر وزیرمتن به‌صورت محلی (یک فایل `woff2` با محور وزن ۱۰۰–۹۰۰)، و تصاویر در `media/`.
 
 ---

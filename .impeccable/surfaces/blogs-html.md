@@ -2,14 +2,14 @@
 version: 1
 slug: "blogs-html"
 primary_target: "blogs.html"
-related_targets: ["blog.html"]
+related_targets: []
 ---
 
 # Blog Surface
 
 ## Scope
 
-Persian RTL static blog index (`blogs.html`) and article detail (`blog.html`), linked from the existing landing page. Visitor mode: Read.
+Persian RTL static blog index (`blogs.html`), linked from the existing landing page. Visitor mode: Read. The article detail page (`blog.html`) was removed, so the index is the whole blog surface: titles are plain text and the category chips are the only navigation.
 
 ## Audience and Job
 
