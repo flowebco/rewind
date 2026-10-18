@@ -238,7 +238,9 @@ instance. Do not expect a frosted-window look over a uniform background.
 - **Filters:** Topic controls use raised cards at rest, `var(--pressed)` when active, and 40px icon wells with `var(--subtle)`. Provide a native select at mobile widths.
 
 ### Blog Hero
-- Use a two-part page title, short explanatory copy, labeled search input, and a compact statbar. Counts must describe the visible sample content and never imply supplied author identities.
+- A calm glass pane for the whole hero, not a second card grid: translucent `rgba(229,237,245,0.22)` ground with a 1px white edge, inset highlight (`inset 0 1px 0 rgba(255,255,255,0.9)`), and `0 8px 22px rgba(45,55,72,0.06)` depth. A separate `hero-glass` layer carries the wet-edge treatment (`filter: contrast(1.9)`, blurred 1px rim at `inset 14px`, `opacity 0.70` baked from `glow 0.95`), leaving text untouched by the contrast filter.
+- A soft radial halo (`hero-ring`, 18rem, `radial-gradient` at 30% 30%, `1.4rem` + `2.8rem` outer glows) replaces the old solid `::after` circle; it is decoration only and honors `prefers-reduced-motion`.
+- Airy density: `clamp(1.8rem, 5vw, 3.4rem)` padding, `clamp(2.1rem, 3.6vw, 3.4rem)`/`1.28` display title (`--text-headline` range), `44ch` deck at `--text-lead`/`1.85`, and `clamp(1.8rem, 3.8vw, 3.2rem)` copy gap. The two-part title, short deck, labeled search, and compact statbar remain; counts must describe the visible sample content and never imply supplied author identities.
 
 ## Do's and Don'ts
 

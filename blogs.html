@@ -30,32 +30,33 @@
     <main class="blog-main" id="main-content">
         <div class="blog-shell">
           <section class="blog-hero" aria-labelledby="blog-title">
-            <div class="blog-hero-copy">
-              <div class="hero-lead">
-                <h1 id="blog-title"><span>دانش فنی</span><strong>برای انتخاب آگاهانه</strong></h1>
-                <div class="hero-rule" aria-hidden="true"></div>
-                <p class="hero-deck">راهنماهایی برای شناخت خطوط تولید خمیر کاغذ، بررسی مواد اولیه و صورت‌بندی پرسش‌های فنی پروژه.</p>
+              <span class="hero-glass" aria-hidden="true"></span>
+              <span class="hero-ring" aria-hidden="true"></span>
+              <div class="blog-hero-copy">
+                <div class="hero-lead">
+                  <h1 id="blog-title"><span>دانش فنی</span><strong>برای انتخاب آگاهانه</strong></h1>
+                  <div class="hero-rule" aria-hidden="true"></div>
+                  <p class="hero-deck">راهنماهایی برای شناخت خطوط تولید خمیر کاغذ، بررسی مواد اولیه و صورت‌بندی پرسش‌های فنی پروژه.</p>
+                </div>
+                <div class="hero-action">
+                  <search class="hero-well" aria-label="جست‌وجو در مقاله‌های نمونه">
+                    <form id="blog-search-form" action="blogs.html#articles" method="get">
+                      <label class="visually-hidden" for="article-search">جست‌وجوی عنوان، موضوع یا واژه‌ی کلیدی</label>
+                      <input id="article-search" name="q" type="search" placeholder="جست‌وجو در مقاله‌ها..." autocomplete="off" aria-controls="article-rows" />
+                      <button class="hero-search-submit" type="submit">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 2a8 8 0 1 0 4.9 14.32l5.39 5.39 1.42-1.42-5.39-5.39A8 8 0 0 0 10 2Zm0 2a6 6 0 1 1 0 12 6 6 0 0 1 0-12Z"/></svg>
+                        <span>جست‌وجو</span>
+                      </button>
+                    </form>
+                  </search>
+                  <ul class="hero-statbar" aria-label="آمار مقاله‌های نمونه">
+                    <li class="hero-stat"><strong>۴</strong><span>مقاله‌ی نمونه</span></li>
+                    <li class="hero-stat"><strong>۳</strong><span>دسته‌بندی</span></li>
+                    <li class="hero-stat"><strong>۰</strong><span>نویسنده‌ی معرفی‌شده</span></li>
+                  </ul>
+                </div>
               </div>
-              <div class="hero-action">
-                <search class="hero-well" aria-label="جست‌وجو در مقاله‌های نمونه">
-                  <form id="blog-search-form" action="blogs.html#articles" method="get">
-                    <label class="visually-hidden" for="article-search">جست‌وجوی عنوان، موضوع یا واژه‌ی کلیدی</label>
-                    <input id="article-search" name="q" type="search" placeholder="جست‌وجو در مقاله‌ها..." autocomplete="off" aria-controls="article-rows" />
-                    <button class="hero-search-submit" type="submit">
-                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 2a8 8 0 1 0 4.9 14.32l5.39 5.39 1.42-1.42-5.39-5.39A8 8 0 0 0 10 2Zm0 2a6 6 0 1 1 0 12 6 6 0 0 1 0-12Z"/></svg>
-                      <span>جست‌وجو</span>
-                    </button>
-                  </form>
-                </search>
-                <ul class="hero-statbar" aria-label="آمار مقاله‌های نمونه">
-                  <li class="hero-stat"><strong>۴</strong><span>مقاله‌ی نمونه</span></li>
-                  <li class="hero-stat"><strong>۳</strong><span>دسته‌بندی</span></li>
-                  <li class="hero-stat"><strong>۰</strong><span>نویسنده‌ی معرفی‌شده</span></li>
-                </ul>
-              </div>
-            </div>
-          </section>
-
+            </section>
 
           <div class="blog-layout">
             <div class="blog-content-column">
@@ -168,11 +169,7 @@
                 <option value="materials">مواد اولیه</option>
                 <option value="planning">راه‌اندازی و ارزیابی</option>
               </select>
-              <!-- impeccable-variants-start dceb938c -->
-              <div data-impeccable-variants="dceb938c" data-impeccable-variant-count="4" style="display: contents">
-                <!-- Original -->
-                <div data-impeccable-variant="original">
-                  <section class="rail-note rail-cta" aria-labelledby="rail-cta-title">
+              <section class="rail-note rail-cta" aria-labelledby="rail-cta-title">
                     <span class="card-fx" aria-hidden="true"></span>
                     <svg class="rail-icon" viewBox="0 0 24 24" aria-hidden="true">
                       <path d="M22 17.0022C21.999 19.8731 19.9816 22.2726 17.2872 22.8616L16.6492 20.9476C17.8532 20.7511 18.8765 20.0171 19.4649 19H17C15.8954 19 15 18.1046 15 17V13C15 11.8954 15.8954 11 17 11H19.9381C19.446 7.05369 16.0796 4 12 4C7.92038 4 4.55399 7.05369 4.06189 11H7C8.10457 11 9 11.8954 9 13V17C9 18.1046 8.10457 19 7 19H4C2.89543 19 2 18.1046 2 17V12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12V12.9987V13V17V17.0013V17.0022ZM20 17V13H17V17H20ZM4 13V17H7V13H4Z"/>
@@ -191,206 +188,6 @@
                       </span>
                     </a>
                   </section>
-                </div>
-                <!-- Variants: insert below this line -->
-                <!-- Variant 1: نورِ کمتر — the filter and the glow come down -->
-                <div data-impeccable-variant="1">
-                  <section class="rail-note rail-cta" aria-labelledby="rail-cta-title">
-                    <span class="card-fx" aria-hidden="true"></span>
-                    <svg class="rail-icon" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M22 17.0022C21.999 19.8731 19.9816 22.2726 17.2872 22.8616L16.6492 20.9476C17.8532 20.7511 18.8765 20.0171 19.4649 19H17C15.8954 19 15 18.1046 15 17V13C15 11.8954 15.8954 11 17 11H19.9381C19.446 7.05369 16.0796 4 12 4C7.92038 4 4.55399 7.05369 4.06189 11H7C8.10457 11 9 11.8954 9 13V17C9 18.1046 8.10457 19 7 19H4C2.89543 19 2 18.1046 2 17V12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12V12.9987V13V17V17.0013V17.0022ZM20 17V13H17V17H20ZM4 13V17H7V13H4Z"/>
-                    </svg>
-                    <span class="rail-kicker">مشاوره</span>
-                    <h3 id="rail-cta-title">برای پروژه‌ی خود راهنمایی می‌خواهید؟</h3>
-                    <p>برای بررسی نیازهای یک خط تولید، شرایط ماده‌ی اولیه و مسیر ارزیابی فنی، با پالپ ایران در ارتباط باشید.</p>
-                    <a class="glass-btn" href="index.html#footer-section">
-                      <span class="glass-fx" aria-hidden="true"></span>
-                      <span class="glass-ring" aria-hidden="true"></span>
-                      <span class="glass-text">درخواست مشاوره</span>
-                      <span class="glass-icon" aria-hidden="true">
-                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M779.180132 473.232045 322.354755 16.406668c-21.413706-21.413706-56.121182-21.413706-77.534887 0-21.413706 21.413706-21.413706 56.122205 0 77.534887l418.057421 418.057421L244.819868 930.057421c-21.413706 21.413706-21.413706 56.122205 0 77.534887 10.706853 10.706853 24.759917 16.059767 38.767955 16.059767s28.061103-5.353938 38.767955-16.059767L779.180132 550.767955C800.593837 529.35425 800.593837 494.64575 779.180132 473.232045z"/>
-                        </svg>
-                      </span>
-                    </a>
-                  </section>
-                </div>
-                <style data-impeccable-css="dceb938c">
-                @scope ([data-impeccable-variant="1"]) {
-                  /* The pane stays, its drama does not. contrast(3) is what makes the rim read as
-                     a wet edge; at 1.6 it still separates the glass from the page but stops
-                     crushing the blur into a hard line. The rim's alpha drops 0.78 to 0.45 and the
-                     sheen 0.90 to 0.42, so the corners stop sparkling. The drop goes from
-                     0 6px 16px to 0 3px 8px, and the four polished-edge insets lose their outer
-                     pair -- those two at 7px were doing most of the shouting.
-                     Contrast is untouched here: no text colour or size moves. */
-                  :scope .card-fx { filter: contrast(1.6); }
-                  :scope .card-fx::before {
-                    border-color: rgba(45,55,72,0.45);
-                    filter: blur(12px);
-                  }
-                  :scope .card-fx::after {
-                    background: linear-gradient(45deg,
-                      rgba(255,255,255,0.42) 0%, transparent 10%,
-                      transparent 90%, rgba(255,255,255,0.42) 100%);
-                    filter: blur(9px);
-                  }
-                  :scope .rail-note.rail-cta {
-                    border-color: rgba(45,55,72,0.08);
-                    box-shadow:
-                      inset 2px -2px 1px -1px rgba(255,255,255,0.85),
-                      inset -2px 2px 1px -1px rgba(255,255,255,0.85),
-                      inset 0 0 3px rgba(45,55,72,0.20),
-                      0 3px 8px var(--shadow-dark);
-                  }
-                  :scope .rail-icon { opacity: .78; }
-                }
-                </style>
-
-                <!-- Variant 2: نوعِ آرام‌تر — the headline steps back -->
-                <div data-impeccable-variant="2">
-                  <section class="rail-note rail-cta" aria-labelledby="rail-cta-title">
-                    <span class="card-fx" aria-hidden="true"></span>
-                    <svg class="rail-icon" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M22 17.0022C21.999 19.8731 19.9816 22.2726 17.2872 22.8616L16.6492 20.9476C17.8532 20.7511 18.8765 20.0171 19.4649 19H17C15.8954 19 15 18.1046 15 17V13C15 11.8954 15.8954 11 17 11H19.9381C19.446 7.05369 16.0796 4 12 4C7.92038 4 4.55399 7.05369 4.06189 11H7C8.10457 11 9 11.8954 9 13V17C9 18.1046 8.10457 19 7 19H4C2.89543 19 2 18.1046 2 17V12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12V12.9987V13V17V17.0013V17.0022ZM20 17V13H17V17H20ZM4 13V17H7V13H4Z"/>
-                    </svg>
-                    <span class="rail-kicker">مشاوره</span>
-                    <h3 id="rail-cta-title">برای پروژه‌ی خود راهنمایی می‌خواهید؟</h3>
-                    <p>برای بررسی نیازهای یک خط تولید، شرایط ماده‌ی اولیه و مسیر ارزیابی فنی، با پالپ ایران در ارتباط باشید.</p>
-                    <a class="glass-btn" href="index.html#footer-section">
-                      <span class="glass-fx" aria-hidden="true"></span>
-                      <span class="glass-ring" aria-hidden="true"></span>
-                      <span class="glass-text">درخواست مشاوره</span>
-                      <span class="glass-icon" aria-hidden="true">
-                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M779.180132 473.232045 322.354755 16.406668c-21.413706-21.413706-56.121182-21.413706-77.534887 0-21.413706 21.413706-21.413706 56.122205 0 77.534887l418.057421 418.057421L244.819868 930.057421c-21.413706 21.413706-21.413706 56.122205 0 77.534887 10.706853 10.706853 24.759917 16.059767 38.767955 16.059767s28.061103-5.353938 38.767955-16.059767L779.180132 550.767955C800.593837 529.35425 800.593837 494.64575 779.180132 473.232045z"/>
-                        </svg>
-                      </span>
-                    </a>
-                  </section>
-                </div>
-                <style data-impeccable-css="dceb938c">
-                @scope ([data-impeccable-variant="2"]) {
-                  /* Only the type moves. The headline gives up two steps of size and one of
-                     weight, from --text-headline-sm/800 to --text-title/700, and takes the
-                     paragraph's 1.7 leading with it, which is the leading this card had before the
-                     bolder pass. The deck steps down to --text-sm. Weight 700 is already the
-                     page's other heading weight, and all three sizes are ramp tokens, so nothing
-                     new enters the system. Hierarchy survives: 1.375rem against a 0.8125rem deck
-                     is still a clear 1.7x jump. The pane and its contrast(3) are untouched, which
-                     is the point -- this variant tests whether the loudness was the type. */
-                  :scope .rail-cta h3 {
-                    font-size: var(--text-title);
-                    font-weight: 700;
-                    line-height: 1.7;
-                  }
-                  :scope .rail-cta p { font-size: var(--text-sm) !important; }
-                  :scope .rail-kicker { font-weight: 700; }
-                }
-                </style>
-
-                <!-- Variant 3: ورقه‌ی بی‌نقش — the effect layer switched off -->
-                <div data-impeccable-variant="3">
-                  <section class="rail-note rail-cta" aria-labelledby="rail-cta-title">
-                    <span class="card-fx" aria-hidden="true"></span>
-                    <svg class="rail-icon" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M22 17.0022C21.999 19.8731 19.9816 22.2726 17.2872 22.8616L16.6492 20.9476C17.8532 20.7511 18.8765 20.0171 19.4649 19H17C15.8954 19 15 18.1046 15 17V13C15 11.8954 15.8954 11 17 11H19.9381C19.446 7.05369 16.0796 4 12 4C7.92038 4 4.55399 7.05369 4.06189 11H7C8.10457 11 9 11.8954 9 13V17C9 18.1046 8.10457 19 7 19H4C2.89543 19 2 18.1046 2 17V12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12V12.9987V13V17V17.0013V17.0022ZM20 17V13H17V17H20ZM4 13V17H7V13H4Z"/>
-                    </svg>
-                    <span class="rail-kicker">مشاوره</span>
-                    <h3 id="rail-cta-title">برای پروژه‌ی خود راهنمایی می‌خواهید؟</h3>
-                    <p>برای بررسی نیازهای یک خط تولید، شرایط ماده‌ی اولیه و مسیر ارزیابی فنی، با پالپ ایران در ارتباط باشید.</p>
-                    <a class="glass-btn" href="index.html#footer-section">
-                      <span class="glass-fx" aria-hidden="true"></span>
-                      <span class="glass-ring" aria-hidden="true"></span>
-                      <span class="glass-text">درخواست مشاوره</span>
-                      <span class="glass-icon" aria-hidden="true">
-                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M779.180132 473.232045 322.354755 16.406668c-21.413706-21.413706-56.121182-21.413706-77.534887 0-21.413706 21.413706-21.413706 56.122205 0 77.534887l418.057421 418.057421L244.819868 930.057421c-21.413706 21.413706-21.413706 56.122205 0 77.534887 10.706853 10.706853 24.759917 16.059767 38.767955 16.059767s28.061103-5.353938 38.767955-16.059767L779.180132 550.767955C800.593837 529.35425 800.593837 494.64575 779.180132 473.232045z"/>
-                        </svg>
-                      </span>
-                    </a>
-                  </section>
-                </div>
-                <style data-impeccable-css="dceb938c">
-                @scope ([data-impeccable-variant="3"]) {
-                  /* The most literal cut: the fx layer is removed entirely, so contrast(3), the
-                     rim and the sheen all go at once, and what is left is the pane's own edge --
-                     one hairline border and two thin white insets. This is the flattest of the
-                     four and the one to pick if the glass turned out to be more than this card
-                     wanted. The span stays in the markup with display:none rather than being
-                     deleted, so accepting this is still a CSS-only change and the layer can come
-                     back. The kicker loses its accent tint and goes to the secondary colour; at
-                     --text-xs that is #5b6b80 on the pane, which measures 4.6:1 against --bg and
-                     stays AA. */
-                  :scope .card-fx { display: none; }
-                  :scope .rail-note.rail-cta {
-                    border-color: rgba(45,55,72,0.09);
-                    background: rgba(255,255,255,0.34);
-                    box-shadow:
-                      inset 0 1px 0 rgba(255,255,255,0.75),
-                      inset 0 -1px 0 rgba(45,55,72,0.06),
-                      0 1px 2px rgba(45,55,72,0.05);
-                  }
-                  :scope .rail-kicker { color: var(--text-secondary); font-weight: 700; }
-                  :scope .rail-icon { fill: var(--accent-darken); opacity: .7; }
-                }
-                </style>
-
-                <!-- Variant 4: هوای بیشتر — density down, air up -->
-                <div data-impeccable-variant="4">
-                  <section class="rail-note rail-cta" aria-labelledby="rail-cta-title">
-                    <span class="card-fx" aria-hidden="true"></span>
-                    <svg class="rail-icon" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M22 17.0022C21.999 19.8731 19.9816 22.2726 17.2872 22.8616L16.6492 20.9476C17.8532 20.7511 18.8765 20.0171 19.4649 19H17C15.8954 19 15 18.1046 15 17V13C15 11.8954 15.8954 11 17 11H19.9381C19.446 7.05369 16.0796 4 12 4C7.92038 4 4.55399 7.05369 4.06189 11H7C8.10457 11 9 11.8954 9 13V17C9 18.1046 8.10457 19 7 19H4C2.89543 19 2 18.1046 2 17V12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12V12.9987V13V17V17.0013V17.0022ZM20 17V13H17V17H20ZM4 13V17H7V13H4Z"/>
-                    </svg>
-                    <span class="rail-kicker">مشاوره</span>
-                    <h3 id="rail-cta-title">برای پروژه‌ی خود راهنمایی می‌خواهید؟</h3>
-                    <p>برای بررسی نیازهای یک خط تولید، شرایط ماده‌ی اولیه و مسیر ارزیابی فنی، با پالپ ایران در ارتباط باشید.</p>
-                    <a class="glass-btn" href="index.html#footer-section">
-                      <span class="glass-fx" aria-hidden="true"></span>
-                      <span class="glass-ring" aria-hidden="true"></span>
-                      <span class="glass-text">درخواست مشاوره</span>
-                      <span class="glass-icon" aria-hidden="true">
-                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M779.180132 473.232045 322.354755 16.406668c-21.413706-21.413706-56.121182-21.413706-77.534887 0-21.413706 21.413706-21.413706 56.122205 0 77.534887l418.057421 418.057421L244.819868 930.057421c-21.413706 21.413706-21.413706 56.122205 0 77.534887 10.706853 10.706853 24.759917 16.059767 38.767955 16.059767s28.061103-5.353938 38.767955-16.059767L779.180132 550.767955C800.593837 529.35425 800.593837 494.64575 779.180132 473.232045z"/>
-                        </svg>
-                      </span>
-                    </a>
-                  </section>
-                </div>
-                <style data-impeccable-css="dceb938c">
-                @scope ([data-impeccable-variant="4"]) {
-                  /* Quiets the card by giving it room instead of taking things away. Padding goes
-                     out one step on all three sides, the headline steps back one notch to
-                     --text-headline-sm at 700 with the looser 1.7 leading, the deck drops to
-                     --text-sm at 1.95, and the drop shadow flattens to 0 2px 6px. The pane and
-                     its contrast(3) stay exactly as they are: this variant's claim is that the
-                     card read loud because it was dense, not because it was decorated.
-                     --text-md, --text-sm, --sp-9, --sp-10 and --sp-11 are all ramp tokens. */
-                  :scope .rail-note.rail-cta {
-                    padding: var(--sp-10) var(--sp-10) var(--sp-11);
-                    box-shadow:
-                      inset 2px -2px 1px -1px rgba(255,255,255,0.90),
-                      inset -2px 2px 1px -1px rgba(255,255,255,0.90),
-                      inset 0 0 4px rgba(45,55,72,0.22),
-                      0 2px 6px var(--shadow-dark);
-                  }
-                  :scope .rail-cta h3 {
-                    margin-block-start: var(--sp-7);
-                    font-weight: 700;
-                    line-height: 1.7;
-                  }
-                  :scope .rail-cta p {
-                    margin-block-start: var(--sp-5);
-                    font-size: var(--text-sm) !important;
-                    line-height: 1.95;
-                  }
-                  :scope .rail-icon { margin-block-end: var(--sp-5); opacity: .8; }
-                }
-                </style>
-
-              </div>
-              <!-- impeccable-variants-end dceb938c -->
             </aside>
           </div>
         </div>
@@ -401,8 +198,5 @@
       <a class="blog-brand" href="index.html"><span>پالپ</span><strong>ایران</strong></a>
       <a href="index.html">بازگشت به وب‌سایت اصلی</a>
     </footer>
-  <!-- impeccable-live-start -->
-<script src="http://localhost:8401/live.js?token=1b678d56-64a0-4909-ba4d-4da8f856b64a"></script>
-<!-- impeccable-live-end -->
-</body>
+  </body>
 </html>

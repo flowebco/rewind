@@ -682,24 +682,48 @@
   min-height: 0;
   align-items: start;
   margin-block-end: var(--sp-22);
-  padding: clamp(1.4rem, 4vw, 3rem);
+  padding: clamp(1.8rem, 5vw, 3.4rem);
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: var(--radius);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.35), rgba(229, 237, 245, 0.8));
-  box-shadow: var(--hero);
+  background: rgba(229, 237, 245, 0.22);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(45, 55, 72, 0.06),
+    0 8px 22px rgba(45, 55, 72, 0.06);
 }
 
-.blog-hero::after {
+.blog-hero::after { display: none; }
+
+.hero-glass {
   position: absolute;
-  inset-inline-end: -4rem;
-  inset-block-start: -6rem;
-  width: 20rem;
-  aspect-ratio: 1;
-  border: 1px solid rgba(255, 255, 255, 0.42);
-  border-radius: 50%;
-  box-shadow: 0 0 0 1.4rem rgba(255, 255, 255, 0.12), 0 0 0 2.8rem rgba(95, 157, 231, 0.05);
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  filter: contrast(1.9);
+  opacity: 0.70;
+}
+
+.hero-glass::before {
   content: "";
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(45, 55, 72, 0.30);
+  border-radius: calc(var(--radius) - 12px);
+  filter: blur(16px);
+}
+
+.hero-ring {
+  position: absolute;
+  inset-inline-end: -3rem;
+  inset-block-start: -4rem;
+  width: 18rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.55), transparent 62%);
+  box-shadow: 0 0 0 1.4rem rgba(255, 255, 255, 0.08), 0 0 0 2.8rem rgba(95, 157, 231, 0.035);
+  opacity: 0.85;
   pointer-events: none;
 }
 
@@ -708,7 +732,7 @@
   z-index: 1;
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(15rem, 0.85fr);
-  gap: clamp(1.4rem, 3.4vw, 2.8rem) clamp(1.2rem, 3vw, 2.4rem);
+  gap: clamp(1.8rem, 3.8vw, 3.2rem) clamp(1.2rem, 3vw, 2.4rem);
   justify-items: start;
   max-width: 62rem;
   margin-inline: 0;
@@ -735,9 +759,9 @@
   display: grid;
   gap: 0.08em;
   margin: 0;
-  font-size: clamp(2rem, 3.2vw, 3.2rem);
+  font-size: clamp(2.1rem, 3.6vw, 3.4rem);
   font-weight: 800;
-  line-height: 1.32;
+  line-height: 1.28;
 }
 
 .blog-hero h1 span {
@@ -759,11 +783,11 @@
 }
 
 .hero-deck {
-  max-width: 42ch;
+  max-width: 44ch;
   margin: 0;
   color: var(--text-secondary);
-  font-size: var(--text-base);
-  line-height: 1.95;
+  font-size: var(--text-lead);
+  line-height: 1.85;
 }
 
 .hero-well {
