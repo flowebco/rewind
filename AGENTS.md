@@ -206,7 +206,7 @@ sha256 از release sidecar می‌گیرد. `IMPECCABLE_HOME` را به
 - `discard` ترمینال است؛ خودِ poll همه‌کار را می‌کند.
 - هیچ‌وقت اسکریپت inject‌شده را commit نکن. `auto-commit.sh` این را حل می‌کند.
 
-### یک باگ واقعی در carbonize که دیدم
+### یک باگ واقعی در carbonize که دیدم (تا الان سه بار)
 
 بلوک carbonize‌ی تولیدشده، CSS **همان نسخه‌ای که پذیرفته شده** را تضمین نمی‌کند:
 در session `5d3b39f5` نسخه‌ی ۲ پذیرفته شد ولی `<style>` داخل بلوک حاوی CSS نسخه‌ی ۱
@@ -521,6 +521,61 @@ a = open(f'/proc/{pid}/cmdline','rb').read().split(b'\0')
 if a[0].endswith(('bash','sh')) and len(a) > 2 and a[1] == '-c': continue  # دستور خودم
 if any('playwright' in x for x in a): ...
 ```
+
+---
+
+### خ) بلوک carbonize CSS نسخه‌ی **اشتباه** را می‌گذارد — سه بار تکرار شد
+
+این دیگر تصادف نیست. در هر سه session، بلوک دوخته‌شده حاوی CSS نسخه‌ی ۱ بود حتی
+وقتی کاربر نسخه‌ی ۲ یا ۳ را پذیرفته بود:
+
+| session | پذیرفته‌شده | محتوای بلوک carbonize |
+|---|---|---|
+| `5d3b39f5` | نسخه‌ی ۲ | `@scope … variant="1"` |
+| `20f06404` | نسخه‌ی ۳ | `@scope … variant="1"` با `min(1300px)` و `sl1` |
+
+پس **هرگز بلوک را کپی نکن.** CSS نسخه‌ی پذیرفته‌شده را از منبع تولیدشده‌ی خودت
+بازسازی کن (همان فایلی که در `/tmp` staged کردی) و بعد migrate کن.
+
+### د) قبل از درج، بلوک را با یک پارسر واقعی اعتبارسنجی کن
+
+`scaffold`ی که هلپر می‌دهد برای عناصر بزرگ **قابل اعتماد نیست**. در session
+`20f06404` روی `div.blog-shell`:
+
+```
+scaffold گفت:  replaceStartLine=32  replaceEndLine=116   (۸۵ خط / ۵,۳۵۵ کاراکتر)
+واقعیت:        ۳۲ تا ۱۹۰                                  (۱۵۹ خط / ۱۲,۵۶۹ کاراکتر)
+```
+
+علت: `element.outerHTML` در event روی **۱۰,۰۰۰ کاراکتر truncate** می‌شود و
+`replaceEndLine` از همان نسخه‌ی بریده مشتق شده. بلوکِ حاصل وسط یک `<article>` قطع
+می‌شد. درجش ۷ خطای لانه‌گذاری تولید کرد در حالی که نسخه‌ی HEAD صفر خطا داشت.
+
+مرز را خودت با پیمایش balance-aware حساب کن:
+
+```python
+depth = 0
+for i in range(start, len(lines)):
+    depth += len(re.findall(r'<div[\s>]', lines[i]))
+    depth -= len(re.findall(r'</div>', lines[i]))
+    if depth == 0 and i > start:
+        end = i; break
+```
+
+و **قبل از publish** با `html.parser` اعتبارسنجی کن؛ نه با شمارش رشته. شمارش
+`<div` غلط است چون داخل `</div>` هم پیدا می‌شود — من دو بار عدد غلط گزارش دادم.
+همیشه نسخه‌ی HEAD را به‌عنوان شاهد (control) هم پارس کن.
+
+### ذ) نام کلاس را از markup بخوان، نه از حافظه
+
+در همان session، قاعده‌ی `position: sticky` را برای `.blog-topic-rail` نوشتم. چنین
+کلاسی **وجود ندارد** — نام واقعی `topic-rail` است (`<aside class="topic-rail">`).
+قاعده بی‌اثر ماند و هیچ خطایی هم نداد.
+
+بدتر: `.topic-rail` از قبل `position: sticky; top: 1.25rem` داشت
+(`css/blog.css:355`)، پس آن بخش از «نسخه‌ی ۳» اصلاً رفتار جدیدی نبود. قبل از
+ارائه‌ی هر نسخه، کلاس‌ها را با `grep` در markup و CSS تطبیق بده تا هم نام درست
+باشد و هم ادعای «جدید بودن» واقعیت داشته باشد.
 
 ---
 
