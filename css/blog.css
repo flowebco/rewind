@@ -472,17 +472,26 @@
   letter-spacing: 0.02em;
 }
 
+/* Raised from var(--text-base) -- body size, and the reason this card read flat
+   while every heading around it ran at display size. It now speaks in the
+   register .blog-hero h1 and .featured-post h2 already use: weight 800 and the
+   hero's own 1.32 leading, at a step the token ramp owns rather than a new fluid
+   clamp, so it lands on the scale DESIGN.md documents. */
 .rail-cta h3 {
   margin-block-start: var(--sp-6);
   color: var(--text-primary);
-  font-size: var(--text-base);
-  line-height: 1.7;
+  font-size: var(--text-headline-sm);
+  font-weight: 800;
+  line-height: 1.32;
 }
 
 .rail-cta p {
   margin-block-start: var(--sp-4);
   color: var(--text-primary);
-  font-size: var(--text-sm);
+  /* Stepped down from --text-sm to --text-md so the headline above is the only
+     loud thing in the card. !important is not decorative here: .rail-note p sets
+     font-size with !important and this rule would lose to it on a tie. */
+  font-size: var(--text-md) !important;
   line-height: 1.8;
 }
 
@@ -1174,6 +1183,11 @@
 }
 
 .rail-kicker {
+  /* The pill's fill is dropped: with the headline at display size a tinted chip
+     above it reads as a second focal point. Kept in this block, not the earlier
+     .rail-kicker rule, because this is the one that sets the colour the label
+     actually gets -- and that colour has to be readable on bare glass. */
+  background: transparent;
   color: var(--text-primary);
 }
 
