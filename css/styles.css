@@ -1326,7 +1326,7 @@ button:not(:disabled),
       white glyph on the --accent circle is 3.58:1, which clears the 3:1 bar for
       a non-text element.
 
-   Markup: see .rail-cta-link in blogs.html. The <a> is the positioning context;
+   Markup: see .glass-btn in blogs.html. The <a> is the positioning context;
    .glass-fx and .glass-ring are decorative and aria-hidden.
    ========================================================================== */
 .glass-btn {
@@ -1432,6 +1432,67 @@ button:not(:disabled),
   border-radius: var(--glass-r);
   filter: blur(1px);
   pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   Glass card effect layer
+   --------------------------------------------------------------------------
+   .glass-fx's technique lifted onto a card-sized pane: the same contrast(3)
+   push, the same blurred rim and corner sheen, cut larger. Lives here rather
+   than in blog.css because it is the second user of the button's material, and
+   a third surface wanting the same glass should not have to rediscover why the
+   filter is confined to this layer.
+
+   The filter must stay on this layer and never on the card itself. A filtered
+   ancestor becomes the containing block for its absolutely positioned
+   descendants, and a card carrying .glass-btn would have the button's own
+   .glass-fx and .glass-ring repositioned against the card instead of against
+   the button.
+
+   Markup: <span class="card-fx" aria-hidden="true"> as the card's first child,
+   with position: relative on the card. Radius comes from the host, so set it on
+   both the card and this layer or the rim will not follow the corner.
+   -------------------------------------------------------------------------- */
+.card-fx {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  filter: contrast(3);
+  pointer-events: none;
+}
+
+/* Rim inset by --sp-8 rather than the button's --sp-12: on a pane this size the
+   button's inset leaves the blur too far from the corner to read as an edge,
+   and a full-perimeter rim is what makes the card look cut from a thicker piece
+   of the same glass. Blur goes 8px -> 10px for the same reason. */
+.card-fx::before {
+  position: absolute;
+  inset-block-start: 12%;
+  inset-inline-start: 50%;
+  width: calc(100% - var(--sp-8));
+  height: calc(100% - var(--sp-8));
+  border: 1px solid rgba(45, 55, 72, 0.80);
+  border-radius: var(--radius);
+  transform: translateX(-50%);
+  filter: blur(10px);
+  content: "";
+}
+
+/* Corner sheen at a 10% reach, tighter than the button's --glass-sheen 15%, so
+   on a large surface the corners spark instead of the whole diagonal glowing. */
+.card-fx::after {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.90) 0%,
+    transparent 10%,
+    transparent 90%,
+    rgba(255, 255, 255, 0.90) 100%
+  );
+  filter: blur(6px);
+  content: "";
 }
 
 /* The icon disc. --accent rather than the reference's neutral grey, so the control
