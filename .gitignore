@@ -22,3 +22,23 @@
 
 # sandbox-only state that must not be committed
 *.log
+
+# Playwright. The ms-playwright.playwright extension scaffolds a whole Node
+# project into this repo when it activates -- package.json with a
+# @playwright/test devDependency, playwright.config.js, tests/example.spec.js
+# (pointed at playwright.dev, nothing to do with this site), a 22 MB
+# node_modules, and .github/workflows/playwright.yml that runs `npm ci` plus a
+# browser install on EVERY push to main. This is a static site with no build
+# step, so all of it is noise and the workflow would just go red.
+# Ignore it here so a re-scaffold cannot be committed by accident.
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
+/package.json
+/package-lock.json
+/playwright.config.js
+/tests/
+/.github/workflows/playwright.yml

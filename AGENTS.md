@@ -468,6 +468,60 @@ exthost2 @ 23:58:57   همان                                ← آخرین خ�
 می‌گیرند. این هم «چیزی پیدا نشد» به نظر می‌رسد ولی ربطی به حافظه ندارد و با
 دستکاری سرور درست نمی‌شود.
 
+### چ) افزونه‌ی Playwright کل یک پروژه‌ی Node را داخل مخزن scaffold می‌کند
+
+وقتی `ms-playwright.playwright` (که VS Code از کلاینت sync می‌کند) فعال شود، دو
+کار مخرب می‌کند:
+
+**۱. در زمان اجرا ~۱۹۴ MB هزینه دارد.** دو پروسه‌ی
+`node …/@playwright/test/cli.js test-server` راه می‌اندازد:
+
+```
+99.0 MB  24840  node …/@playwright/test/cli.js test-server
+94.6 MB   7677  node …/@playwright/test/cli.js test-server
+```
+
+خود افزونه روی دیسک فقط ۱.۸ MB است، پس `du` گمراه‌تان می‌کند. حذف فایل به‌تنهایی
+کافی نیست: **exthostِ در حال اجرا هنوز افزونه را در حافظه دارد و respawn می‌کند.**
+باید هر دو exthost را کشت. این همان چیزی بود که پروکسی ۸۰۸۰ را کشت (بدون هیچ
+خطایی در لاگ — یعنی OOM kill، نه crash) و حافظه را به ۹۷۵/۱۰۲۴ با فقط ۲۱ MB
+cache رساند.
+
+**۲. مخزن را آلوده می‌کند.** این‌ها را ساخت:
+
+```
+package.json               با devDependencies: @playwright/test  (روی یک سایت استاتیک!)
+package-lock.json          2.4 KB
+playwright.config.js       2.2 KB
+tests/example.spec.js      به https://playwright.dev/ اشاره می‌کند — بی‌ربط به پروژه
+node_modules/              22 MB
+.github/workflows/playwright.yml    ← روی هر push به main: npm ci + نصب مرورگر، timeout ۶۰ دقیقه
+```
+
+آن workflow یعنی **هر push شما یک GitHub Action سنگین و احتمالاً قرمز** راه
+می‌اندازد. همه را به `/tmp/playwright-scaffold-removed` منتقل کردم و `.gitignore`
+را سخت کردم تا scaffold مجدد تصادفی commit نشود.
+
+**۳. و یک خسارت جانبیِ جدی:** جایی در همین فرایند
+`.agents/skills/impeccable/scripts/bin/windows-x64/impeccable.exe` (۱۹ MB) **از
+دیسک حذف شد** — تنها باینری ویندوزِ انجین impeccable در مخزن. با
+`git checkout --` برگرداندم. بعد از هر بار دست‌کاری این محیط، `git status` را
+ببینید و دنبال ` D ` بگردید؛ حذف‌های ناخواسته بی‌صدا اتفاق می‌افتند.
+
+پیشگیری: در VS Code افزونه‌ی Playwright را برای این workspace غیرفعال کنید
+(`Disable (Remote)`)، یا پنل Chat را ببندید تا sync نشود.
+
+⚠️ **یک false positive که دو بار تکرار کردم:** اگر با
+`case "$cmdline" in *@playwright*)` پروسه‌ها را بشمارید، **دستور بررسیِ خودتان**
+هم تطبیق می‌شود چون همان رشته را در cmdline دارد. یک بار `playwright=1` گزارش دادم
+در حالی که صفر بود. همیشه روی **argv** تطبیق بدهید، نه روی رشته‌ی کامل cmdline:
+
+```python
+a = open(f'/proc/{pid}/cmdline','rb').read().split(b'\0')
+if a[0].endswith(('bash','sh')) and len(a) > 2 and a[1] == '-c': continue  # دستور خودم
+if any('playwright' in x for x in a): ...
+```
+
 ---
 
 ## ۱۰. چک‌لیست شروع
