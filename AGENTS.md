@@ -47,6 +47,9 @@ OOM می‌شود — در بدترین حالت حتی `echo ok` هم با `spa
 **قاعده‌ها:**
 - قبل از هر بار اتصال تونل، `sh scripts/trim-extensions.sh status` را اجرا کن.
   این **هر دو** دایرکتوری افزونه را نشان می‌دهد (بخش ۹٫۵ ج را ببین).
+- `spawn ENOMEM` خودش را به شکل‌های گمراه‌کننده نشان می‌دهد. در VS Code شده
+  «Git not found»، و برای ابزارهای خود agent شده `spawn ENOMEM` در هر دستور bash
+  (حتی `echo ok`). پیام را باور نکن؛ لاگ را بخوان (بخش ۹٫۵ ث).
 - هرگز اجازه نده چند تب vscode.dev همزمان وصل شوند. هر اتصال مجدد یک
   `extensionHost` جدید می‌سازد که هیچ‌وقت آزاد نمی‌شود؛ دقیقاً همین باعث سقوط‌های
   پیاپی شد (۷ کانال همزمان → ۱۶ پروسه).
@@ -323,7 +326,7 @@ impeccable آن بخش را به‌عنوان نقص می‌بیند و برمی
 
 ---
 
-## ۹٫۵. چهار تله‌ای که بعداً کشف شدند
+## ۹٫۵. تله‌هایی که با شکست واقعی کشف شدند
 
 این‌ها را دیر یاد گرفتم و هر کدام یک بار کار را خراب کرد.
 
@@ -414,6 +417,56 @@ crash-loop کرد، اول این را بررسی کن.
 3. کاربر authorize کند
 4. `tunnel status` → باید `"tunnel":"Connected"` و `name`/`tunnel_id` غیر null باشد
 5. **حالا** URL را بده
+
+### ث) «Git not found» یعنی `spawn ENOMEM`، نه نبودنِ git
+
+این پیام در VS Code **گمراه‌کننده** است و اگر باورش کنی وقتت را با نصب git یا
+دستکاری `git.path` تلف می‌کنی. لاگ واقعیِ افزونه این را می‌گوید:
+
+```
+[warning] Unable to find git. Error: spawn ENOMEM
+[warning] [main] Failed to create model: Error: Git installation not found.
+```
+
+یعنی افزونه‌ی `vscode.git` نتوانسته `git --version` را **spawn** کند چون حافظه
+نبوده، و VS Code هر خطای spawn را به «installation not found» ترجمه می‌کند.
+`git` خودش سالم است:
+
+```sh
+command -v git     # /usr/bin/git
+git --version      # git version 2.39.5
+```
+
+**چطور تشخیص دهی کدام است:** لاگ افزونه را بخوان، نه پیام UI را:
+
+```sh
+L=$(ls -dt /tmp/.vscode-server/data/logs/*/ | head -1)
+grep -h "Unable to find git" "$L"exthost*/vscode.git/Git.log | tail -5
+```
+
+اگر `spawn ENOMEM` دیدی، مشکل حافظه است. اگر `ENOENT` دیدی، واقعاً git نیست.
+
+**علت ریشه‌ای:** هر reconnect یا پنجره‌ی اضافی یک extension host **جدید** می‌سازد
+و قبلی آزاد نمی‌شود. وقتی دو host همزمان مقداردهی اولیه می‌کنند، حافظه اوج
+می‌گیرد و host دوم در `spawn` شکست می‌خورد. شاهدِ مشاهده‌شده:
+
+```
+exthost1 @ 23:56:31   > git status -z -uall [7ms]        ← سالم
+exthost2 @ 23:57:07   Unable to find git. spawn ENOMEM   ← host دوم
+exthost2 @ 23:58:57   همان                                ← آخرین خطا
+```
+
+**راه‌حل:** یک بار `Developer: Reload Window` وقتی حافظه آزاد است. با
+`sh scripts/restore.sh --status` فضای واقعی را چک کن (عدد خام
+`memory.usage_in_bytes` را نه — بخش بزرگی از آن page cache قابل بازیافت است).
+و به کاربر بگو **فقط یک پنجره** باز کند و reload پیاپی نزند.
+
+تنظیم `git.path` کمکی نمی‌کند چون مسیر هیچ‌وقت مشکل نبوده.
+
+**یک نکته‌ی بی‌ربط ولی مشابه:** `@vscode/ripgrep` در درخت سرور وجود ندارد (فقط
+`ripgrep-universal` هست)، پس جست‌وجوی VS Code و Copilot Chat خطای ENOENT
+می‌گیرند. این هم «چیزی پیدا نشد» به نظر می‌رسد ولی ربطی به حافظه ندارد و با
+دستکاری سرور درست نمی‌شود.
 
 ---
 
