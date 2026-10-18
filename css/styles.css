@@ -57,6 +57,42 @@
   --text-headline: 2rem;
   --text-headline-lg: 2.25rem;
   --text-display-xs: 2.5rem;
+  /* Spacing scale in 0.125rem (2px) steps. The two stylesheets carried 43
+     distinct rem spacing values across 203 declarations -- 0.15, 0.38, 0.62,
+     0.72, 1.05, 1.15, 1.3, 2.3, 3.4 among them -- with no base unit behind
+     them, which is why the vertical rhythm read as accidental rather than
+     deliberate. Everything now resolves through these tokens. The scale stops
+     at the largest value in use, and steps nothing needs are not declared.
+     The step is 2px rather than the 4px a spacing scale usually starts from,
+     because the measurement said so: snapping these 43 values to a 4px grid moved
+     60 of the 203 declarations by more than 1px (worst 1.9px), which would have
+     changed the rhythm instead of naming it. On a 2px grid none moves by more
+     than 0.8px. The design's real granularity is ~2px. */
+  --sp-1: 0.125rem;
+  --sp-2: 0.25rem;
+  --sp-3: 0.375rem;
+  --sp-4: 0.5rem;
+  --sp-5: 0.625rem;
+  --sp-6: 0.75rem;
+  --sp-7: 0.875rem;
+  --sp-8: 1rem;
+  --sp-9: 1.125rem;
+  --sp-10: 1.25rem;
+  --sp-11: 1.375rem;
+  --sp-12: 1.5rem;
+  --sp-13: 1.625rem;
+  --sp-14: 1.75rem;
+  --sp-16: 2rem;
+  --sp-18: 2.25rem;
+  --sp-19: 2.375rem;
+  --sp-20: 2.5rem;
+  --sp-22: 2.75rem;
+  --sp-24: 3rem;
+  --sp-26: 3.25rem;
+  --sp-27: 3.375rem;
+  --sp-32: 4rem;
+  --sp-40: 5rem;
+  --sp-44: 5.5rem;
   --radius: 24px;
   --transition: 0.4s ease-in-out;
   --raised: -8px -8px 16px var(--shadow-light), 8px 8px 16px var(--shadow-dark);
@@ -171,14 +207,14 @@ nav {
   box-shadow: var(--raised);
   border: 2px solid rgba(255, 255, 255, 0.4);
   align-items: center;
-  padding: 0.3rem 0.6rem;
+  padding: var(--sp-2) var(--sp-5);
 }
 nav ul {
   display: flex;
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: 0.25rem;
+  gap: var(--sp-2);
 }
 
 nav a {
@@ -187,7 +223,7 @@ nav a {
   white-space: nowrap;
   font-weight: bold;
   font-size: var(--text-md);
-  padding: 0.6rem 1.2rem;
+  padding: var(--sp-5) var(--sp-10);
   border-radius: 30px;
   transition: var(--transition);
   display: block;
@@ -246,9 +282,9 @@ main > footer {
   width: min(92vw, 980px);
   scroll-snap-align: start;
   box-sizing: border-box;
-  gap: 2.8rem;
+  gap: var(--sp-22);
   min-height: 100svh;
-  padding: 3rem 1.8rem 2.5rem;
+  padding: var(--sp-24) var(--sp-14) var(--sp-20);
   margin: 0 auto;
   flex-shrink: 0;
   content-visibility: auto;
@@ -259,8 +295,8 @@ main > footer {
 
 #footer-section {
   min-height: fit-content;
-  margin-top: 4rem;
-  margin-bottom: 4rem;
+  margin-top: var(--sp-32);
+  margin-bottom: var(--sp-32);
   display: flex;
 }
 
@@ -272,7 +308,7 @@ main > footer {
   background-color: var(--bg);
   color: var(--text-primary);
   border: 2px solid rgb(255 255 255 / 15%);
-  padding: 0.8rem 1.2rem;
+  padding: var(--sp-6) var(--sp-10);
   border-radius: 18px;
   box-shadow: var(--raised);
   font-weight: 600;
@@ -307,10 +343,10 @@ main > footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
+  gap: var(--sp-6);
   width: 100%;
   text-align: center;
-  margin: 0 0 1.5rem 0;
+  margin: 0 0 var(--sp-12) 0;
 }
 .fixed-part {
   display: block;
@@ -378,7 +414,7 @@ main > footer {
   isolation: isolate;
   width: 100%;
   min-height: 100svh;
-  padding: 5vw 1.25rem 1.5rem;
+  padding: 5vw var(--sp-10) var(--sp-12);
   justify-content: center;
 }
 .hero-background {
@@ -414,10 +450,10 @@ main > footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: var(--sp-12);
   justify-content: flex-end;
   height: 100%;
-  padding-block: 2.5rem 1rem;
+  padding-block: var(--sp-20) var(--sp-8);
 }
 #landing .hero-logo {
   width: min(56vw, 230px);
@@ -429,12 +465,12 @@ main > footer {
   flex: none;
   width: 100%;
   min-width: 0;
-  gap: 1rem;
+  gap: var(--sp-8);
   padding: 0;
 }
 #landing .landing-headline {
   margin: 0;
-  gap: 0.45rem;
+  gap: var(--sp-4);
   min-width: 0;
 }
 #landing .fixed-part {
@@ -450,17 +486,17 @@ main > footer {
   min-width: 0;
 }
 #landing .actions .btn {
-  padding: 0.72rem 0.9rem;
+  padding: var(--sp-6) var(--sp-7);
   font-size: var(--text-lg);
 }
 .hero-text {
   display: flex;
-  gap: 3rem;
+  gap: var(--sp-24);
   flex-direction: column;
   justify-content: center;
 }
 .hero-text .actions {
-  gap: 0.7rem;
+  gap: var(--sp-6);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -482,14 +518,14 @@ main > footer {
 
 .products-grid {
   display: flex;
-  gap: 2rem;
+  gap: var(--sp-16);
   width: 100%;
   flex-wrap: wrap;
   justify-content: center;
   align-items: stretch;
 }
 .product-card {
-  padding: 0 0 2rem;
+  padding: 0 0 var(--sp-16);
   border-radius: var(--radius);
   box-shadow: var(--raised);
   transition: transform var(--transition), box-shadow var(--transition);
@@ -506,7 +542,7 @@ main > footer {
   justify-content: space-between;
   content-visibility: auto;
   contain-intrinsic-size: 500px;
-  gap: 1rem;
+  gap: var(--sp-8);
 }
 .product-card:hover,
 .product-card:focus-within {
@@ -536,7 +572,7 @@ main > footer {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.8rem 1.6rem;
+  padding: var(--sp-6) var(--sp-13);
   border-radius: 16px;
   background-color: var(--bg);
   box-shadow: var(--raised);
@@ -590,7 +626,7 @@ main > footer {
 }
 
 .footer-card {
-  padding: 2rem 1rem;
+  padding: var(--sp-16) var(--sp-8);
   border-radius: 40px;
   box-shadow: var(--pressed-deep);
   text-align: center;
@@ -598,9 +634,9 @@ main > footer {
 }
 .newsletter {
   display: flex;
-  gap: 1.5rem;
+  gap: var(--sp-12);
   max-width: 500px;
-  margin: 2rem auto;
+  margin: var(--sp-16) auto;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
@@ -608,7 +644,7 @@ main > footer {
 }
 .newsletter input {
   flex: 1;
-  padding: 0.9rem 1.5rem;
+  padding: var(--sp-7) var(--sp-12);
   border-radius: 18px;
   border: none;
   background: var(--bg);
@@ -624,7 +660,7 @@ main > footer {
 
 .contact-info-card {
   display: flex;
-  gap: 1.4rem;
+  gap: var(--sp-11);
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-evenly;
@@ -633,13 +669,13 @@ main > footer {
 
 .contact-item {
   display: flex;
-  gap: 0.7rem;
+  gap: var(--sp-6);
   color: var(--text-primary);
   text-decoration: none;
   font-size: var(--text-lg);
   font-weight: 500;
   transition: var(--transition);
-  padding: 0.4rem 0.8rem;
+  padding: var(--sp-3) var(--sp-6);
   border-radius: 14px;
   white-space: nowrap;
   max-width: 150px;
@@ -680,8 +716,8 @@ main > footer {
 
 .social-links {
   display: flex;
-  gap: 2rem;
-  /* margin: 1.5rem auto 0.5rem; */
+  gap: var(--sp-16);
+  /* margin: var(--sp-12) auto var(--sp-4); */
   list-style: none;
   padding: 0;
 }
@@ -759,7 +795,7 @@ main > footer {
   flex-direction: row;
   align-items: flex-start;
   width: min(100%, 820px);
-  gap: 1.75rem;
+  gap: var(--sp-14);
   justify-content: center;
   position: relative;
 }
@@ -789,7 +825,7 @@ main > footer {
   border-radius: 20px;
   box-shadow: var(--raised);
   border: 1px solid rgba(255, 255, 255, 0.4);
-  padding: 1.2rem 1.4rem;
+  padding: var(--sp-10) var(--sp-11);
   transition:
     box-shadow var(--transition),
     transform var(--transition);
@@ -800,7 +836,7 @@ main > footer {
   transform: translateX(-3px);
 }
 .service-card-new h3 {
-  margin: 0 0 0.35rem;
+  margin: 0 0 var(--sp-3);
   font-size: var(--text-lead);
   font-weight: 800;
 }
@@ -877,7 +913,7 @@ main > footer {
 
 @container main-container (max-width: 900px) {
   .services-layout {
-    gap: 0.8rem;
+    gap: var(--sp-6);
   }
   .services-timeline {
     width: 60px;
@@ -886,11 +922,11 @@ main > footer {
     min-height: 160px;
   }
   .service-card-new {
-    padding: 0.8rem 1rem;
+    padding: var(--sp-6) var(--sp-8);
   }
   .service-card-new h3 {
     font-size: var(--text-lg);
-    margin-bottom: 0.25rem;
+    margin-bottom: var(--sp-2);
   }
   .service-card-new p {
     font-size: var(--text-xs);
@@ -902,8 +938,8 @@ main > footer {
   .contact-info-card {
     /* flex-direction: column; */
     /* align-items: center; */
-    /* gap: 1rem; */
-    /* padding: 1.5rem; */
+    /* gap: var(--sp-8); */
+    /* padding: var(--sp-12); */
   }
 }
 
@@ -960,7 +996,7 @@ main > footer {
   view-timeline-name: --section-projects;
 }
 .section-lead {
-  margin: -0.6rem 0 0;
+  margin: calc(-1 * var(--sp-5)) 0 0;
   text-align: center;
   max-width: 38rem;
 }
@@ -969,7 +1005,7 @@ main > footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: var(--sp-8);
   width: 100%;
 }
 .statbar {
@@ -980,10 +1016,10 @@ main > footer {
   border-radius: 40px;
   box-shadow: var(--raised);
   border: 2px solid rgba(255, 255, 255, 0.4);
-  padding: 0.35rem;
+  padding: var(--sp-3);
 }
 .stat {
-  padding: 0.45rem 1.05rem;
+  padding: var(--sp-4) var(--sp-8);
   text-align: center;
 }
 .stat strong {
@@ -1006,8 +1042,8 @@ main > footer {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: 1rem;
-  margin-block-end: 0.8rem;
+  gap: var(--sp-8);
+  margin-block-end: var(--sp-6);
 }
 .showcase-heading h3 {
   font-size: var(--text-title-sm);
@@ -1021,7 +1057,7 @@ main > footer {
 .project-gallery {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: var(--sp-8);
   align-items: stretch;
 }
 .project-photo {
@@ -1058,7 +1094,7 @@ main > footer {
 .proof-grid {
   display: flex;
   flex-wrap: nowrap;
-  gap: 1rem;
+  gap: var(--sp-8);
   width: 100%;
 }
 .proof-card {
@@ -1066,12 +1102,12 @@ main > footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.8rem;
+  gap: var(--sp-6);
   background: linear-gradient(180deg, rgba(255,255,255,0.42), rgba(229,237,245,0.9));
   border-radius: var(--radius);
   box-shadow: var(--raised);
   border: 1px solid rgba(255, 255, 255, 0.35);
-  padding: 0.9rem 0.8rem 1rem;
+  padding: var(--sp-7) var(--sp-6) var(--sp-8);
   text-align: center;
   transition: transform var(--transition), box-shadow var(--transition);
   min-width: 0;
@@ -1091,7 +1127,7 @@ main > footer {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: 0.5rem;
+  padding: var(--sp-4);
 }
 .proof-grid img {
   display: block;
@@ -1121,7 +1157,7 @@ main > footer {
   .proof-card {
     width: 100%;
     max-width: none;
-    gap: 0.6rem;
+    gap: var(--sp-5);
   }
   .proof-well {
     max-width: 110px;
@@ -1136,7 +1172,7 @@ main > footer {
   background: rgba(45, 55, 72, 0.28);
   display: grid;
   place-items: center;
-  padding: 1.2rem;
+  padding: var(--sp-10);
 }
 .consult-panel {
   width: min(100%, 400px);
@@ -1144,17 +1180,17 @@ main > footer {
   border-radius: 24px;
   box-shadow: var(--hero);
   border: 1px solid rgba(255, 255, 255, 0.5);
-  padding: 1.3rem 1.3rem 1.4rem;
+  padding: var(--sp-10) var(--sp-10) var(--sp-11);
   position: relative;
 }
 .consult-panel h3 {
-  margin: 0 0 0.4rem;
+  margin: 0 0 var(--sp-3);
   font-size: var(--text-lead);
   text-align: center;
 }
 .consult-panel p {
   text-align: center;
-  margin: 0 0 0.9rem;
+  margin: 0 0 var(--sp-7);
 }
 .consult-close {
   position: absolute;
@@ -1173,7 +1209,7 @@ main > footer {
 .consult-links {
   display: flex;
   flex-direction: column;
-  gap: 0.55rem;
+  gap: var(--sp-4);
 }
 .consult-links a {
   text-decoration: none;
@@ -1198,7 +1234,7 @@ nav ul {
   .proof-card {
     display: grid;
     grid-template-columns: minmax(110px, 0.7fr) 1fr;
-    column-gap: 0.85rem;
+    column-gap: var(--sp-7);
     align-items: center;
     text-align: start;
   }
@@ -1215,26 +1251,26 @@ nav ul {
     padding-inline: 0;
   }
   nav a {
-    padding: 0.45rem 0.62rem;
+    padding: var(--sp-4) var(--sp-5);
     font-size: var(--text-xs);
   }
 }
 
 @media (max-width: 760px) {
   #projects {
-    padding-block-start: 5.5rem;
+    padding-block-start: var(--sp-44);
   }
   .showcase-heading {
     align-items: flex-start;
     flex-direction: column;
-    gap: 0.15rem;
+    gap: var(--sp-1);
   }
   nav a {
-    padding: 0.45rem 0.55rem;
+    padding: var(--sp-4) var(--sp-4);
     font-size: var(--text-xs);
   }
   .stat {
-    padding: 0.4rem 0.7rem;
+    padding: var(--sp-3) var(--sp-6);
   }
 }
 

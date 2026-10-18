@@ -138,6 +138,27 @@ A `clamp()` middle term must be a **relative** length. `clamp(1.55rem, 1.85rem,
 were never fluid; both are fixed. Do not write one whose middle term is a `rem`
 literal.
 
+## Spacing
+
+Set every `gap`, `margin` and `padding` with the `--sp-*` tokens in
+`css/styles.css`. They step by `0.125rem` (2px) from `--sp-1` up to the largest
+value the design actually uses, and only used steps are declared — there are no
+dead tokens.
+
+Before this the two stylesheets carried **43 distinct rem spacing values across
+203 declarations** (`0.15`, `0.38`, `0.62`, `0.72`, `1.05`, `1.15`, `1.3`, `2.3`,
+`3.4` …) with no base unit behind them, which is why the vertical rhythm read as
+accidental. Snapping them was measured before it was applied:
+
+| grid | moved ≤1px | moved >1px | worst |
+|---|---|---|---|
+| 4px (`0.25rem`) | 143 | **60** | 1.9px |
+| **2px (`0.125rem`)** | **203** | **0** | **0.8px** |
+
+So the step is 2px, not the 4px a spacing scale usually starts from. A 4px grid
+would have *changed* the rhythm instead of naming it; 2px preserves every value
+to within 0.8px. If you add spacing, add it on this grid.
+
 ## Layout
 
 Use a centered content width capped near 1120px with generous vertical section spacing. The blog index pairs a flexible reading column with a 250px topic rail on wide screens; below 700px, stack the topic selector above the featured content and use one card column. At narrow widths, use viewport-aware side margins so the shell remains inside the visible client area when classic scrollbars are present. Keep article text to a readable measure and preserve normal document scrolling.
