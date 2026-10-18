@@ -220,11 +220,22 @@ boot_live() {
   # recorded pid is dead, delete the file so a real helper gets spawned.
   sj=$REPO/.impeccable/live/server.json
   if [ -f "$sj" ]; then
+    # A ZOMBIE still has a /proc entry, so isdir('/proc/pid') is NOT a liveness
+    # test. It reported a dead helper as alive while port 8400 sat closed, and
+    # `impeccable live` then reused the stale file instead of spawning a helper.
+    # Check the process state, that cmdline is non-empty, and that it is still
+    # the helper (pids get reused).
     stale=$(python3 -c "
-import json, os, sys
+import json, sys
 try: pid = str(json.load(open('$sj'))['pid'])
 except Exception: print('yes'); sys.exit(0)
-print('no' if os.path.isdir('/proc/' + pid) else 'yes')
+try:
+    st = open('/proc/' + pid + '/status').read()
+    cl = open('/proc/' + pid + '/cmdline','rb').read()
+except Exception:
+    print('yes'); sys.exit(0)
+state = dict(l.split(':',1) for l in st.splitlines() if ':' in l).get('State','').strip()
+print('yes' if (state.startswith('Z') or not cl.strip() or b'impeccable' not in cl) else 'no')
 " 2>/dev/null)
     [ "$stale" = "yes" ] && { rm -f "$sj"; warn "removed a stale server.json (its pid was dead); forcing a fresh helper"; }
   fi
