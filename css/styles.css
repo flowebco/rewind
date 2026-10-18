@@ -35,6 +35,28 @@
      large display headings stay on --accent-darken. */
   --accent-ink: #9c4800;
   --accent: #e75a08;
+  /* Type ramp: 13 steps replacing the 33 literal rem sizes that css/blog.css
+     and this file carried between them, 28 of them off the ramp DESIGN.md
+     documented -- eleven values in the 0.82-0.96 band alone, all doing the
+     same small-label job. That is why the page read as unsettled no matter
+     how the boxes were arranged.
+     Below 1rem the step is 0.0625rem because the design genuinely uses
+     1px-level distinctions there; above it the steps are the ones already in
+     use, so no existing size moves except 2.1 -> 2.0 and 2.35 -> 2.25.
+     Use these tokens instead of literals so the ramp stays a ramp. */
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-md: 0.875rem;
+  --text-lg: 0.9375rem;
+  --text-base: 1rem;
+  --text-lead: 1.125rem;
+  --text-title-sm: 1.25rem;
+  --text-title: 1.375rem;
+  --text-title-lg: 1.5rem;
+  --text-headline-sm: 1.75rem;
+  --text-headline: 2rem;
+  --text-headline-lg: 2.25rem;
+  --text-display-xs: 2.5rem;
   --radius: 24px;
   --transition: 0.4s ease-in-out;
   --raised: -8px -8px 16px var(--shadow-light), 8px 8px 16px var(--shadow-dark);
@@ -120,7 +142,7 @@ h2 {
 }
 
 h3 {
-  font-size: 1.07rem;
+  font-size: var(--text-lead);
   margin-bottom: 0;
   color: var(--text-primary);
   font-weight: 700;
@@ -130,7 +152,7 @@ p {
   line-height: 1.9;
   color: var(--text-secondary);
   text-wrap: pretty;
-  font-size: 0.95rem;
+  font-size: var(--text-lg);
 }
 
 
@@ -164,7 +186,7 @@ nav a {
   color: var(--text-secondary);
   white-space: nowrap;
   font-weight: bold;
-  font-size: 0.85rem;
+  font-size: var(--text-md);
   padding: 0.6rem 1.2rem;
   border-radius: 30px;
   transition: var(--transition);
@@ -429,7 +451,7 @@ main > footer {
 }
 #landing .actions .btn {
   padding: 0.72rem 0.9rem;
-  font-size: 0.92rem;
+  font-size: var(--text-lg);
 }
 .hero-text {
   display: flex;
@@ -451,10 +473,10 @@ main > footer {
     width: 270px;
   }
   #landing .fixed-part {
-    font-size: 2.35rem;
+    font-size: var(--text-headline-lg);
   }
   #landing .dynamic-text-item {
-    font-size: 1.45rem;
+    font-size: var(--text-title-lg);
   }
 }
 
@@ -526,7 +548,7 @@ main > footer {
   color: var(--text-primary);
   font-family: inherit;
   font-weight: 700;
-  font-size: 0.92rem;
+  font-size: var(--text-lg);
   overflow: visible;
   border: none;
 }
@@ -614,7 +636,7 @@ main > footer {
   gap: 0.7rem;
   color: var(--text-primary);
   text-decoration: none;
-  font-size: 0.92rem;
+  font-size: var(--text-lg);
   font-weight: 500;
   transition: var(--transition);
   padding: 0.4rem 0.8rem;
@@ -641,13 +663,13 @@ main > footer {
 }
 
 .contact-label {
-  font-size: 0.72rem;
+  font-size: var(--text-xs);
   color: var(--text-secondary);
   display: block;
   line-height: 2;
 }
 .contact-value {
-  font-size: 0.92rem;
+  font-size: var(--text-lg);
   color: var(--text-primary);
   font-weight: 600;
   line-height: 1.4;
@@ -779,12 +801,12 @@ main > footer {
 }
 .service-card-new h3 {
   margin: 0 0 0.35rem;
-  font-size: 1.12rem;
+  font-size: var(--text-lead);
   font-weight: 800;
 }
 .service-card-new p {
   margin: 0;
-  font-size: 0.92rem;
+  font-size: var(--text-lg);
   line-height: 1.8;
   padding: 0;
   color: var(--text-secondary);
@@ -867,11 +889,11 @@ main > footer {
     padding: 0.8rem 1rem;
   }
   .service-card-new h3 {
-    font-size: 0.95rem;
+    font-size: var(--text-lg);
     margin-bottom: 0.25rem;
   }
   .service-card-new p {
-    font-size: 0.75rem;
+    font-size: var(--text-xs);
     line-height: 1.5;
   }
   .newsletter {
@@ -967,13 +989,13 @@ main > footer {
 .stat strong {
   display: block;
   color: var(--accent);
-  font-size: 1.15rem;
+  font-size: var(--text-lead);
   font-weight: 800;
 }
 .stat span {
   display: block;
   color: var(--text-secondary);
-  font-size: 0.78rem;
+  font-size: var(--text-xs);
   font-weight: 600;
 }
 
@@ -988,13 +1010,13 @@ main > footer {
   margin-block-end: 0.8rem;
 }
 .showcase-heading h3 {
-  font-size: 1.2rem;
+  font-size: var(--text-title-sm);
   font-weight: 800;
 }
 .showcase-heading p {
   margin: 0;
   padding: 0;
-  font-size: 0.82rem;
+  font-size: var(--text-sm);
 }
 .project-gallery {
   display: flex;
@@ -1081,13 +1103,13 @@ main > footer {
 }
 .proof-card h3 {
   margin: 0;
-  font-size: 1.02rem;
+  font-size: var(--text-base);
   font-weight: 800;
 }
 .proof-card p {
   margin: 0;
   padding: 0;
-  font-size: 0.82rem;
+  font-size: var(--text-sm);
   line-height: 1.7;
   color: var(--text-secondary);
 }
@@ -1127,7 +1149,7 @@ main > footer {
 }
 .consult-panel h3 {
   margin: 0 0 0.4rem;
-  font-size: 1.15rem;
+  font-size: var(--text-lead);
   text-align: center;
 }
 .consult-panel p {
@@ -1146,7 +1168,7 @@ main > footer {
   box-shadow: var(--subtle);
   color: var(--text-secondary);
   font-family: inherit;
-  font-size: 1rem;
+  font-size: var(--text-base);
 }
 .consult-links {
   display: flex;
@@ -1194,7 +1216,7 @@ nav ul {
   }
   nav a {
     padding: 0.45rem 0.62rem;
-    font-size: 0.74rem;
+    font-size: var(--text-xs);
   }
 }
 
@@ -1209,7 +1231,7 @@ nav ul {
   }
   nav a {
     padding: 0.45rem 0.55rem;
-    font-size: 0.72rem;
+    font-size: var(--text-xs);
   }
   .stat {
     padding: 0.4rem 0.7rem;

@@ -12,7 +12,7 @@ colors:
 typography:
   display:
     fontFamily: "Vazirmatn Variable, system-ui, sans-serif"
-    fontSize: "clamp(2.4rem, 3.4rem, 4.7rem)"
+    fontSize: "clamp(2.5rem, 4vw, 3.75rem)"
     fontWeight: 800
     lineHeight: 1.28
   body:
@@ -76,8 +76,9 @@ Use the raised and inset surfaces to clarify interaction and hierarchy. Keep art
 The palette is a cool blue-gray industrial ground with dark slate text and a restrained orange signal.
 
 ### Primary
-- **Signal Orange** (`#e75a08`): Brand emphasis, large display accents, and the rotating CTA ring.
-- **Deep Orange** (`#c95e00`): Large accent headings and icon accents. At approximately 3.5:1 against the site ground, do not use it for small text.
+- **Signal Orange** (`#e75a08`): Brand emphasis, large display accents, and the rotating CTA ring. Measures 3.03:1 against the ground, so it is decoration and large text only.
+- **Deep Orange** (`#c95e00`, `--accent-darken`): Large accent headings and icon accents. Measures 3.49:1 against the ground, which clears the 3:1 bar for large text (24px+, or 18.66px bold) and for non-text elements, and fails the 4.5:1 bar below that. Do not use it for small text.
+- **Accent Ink** (`#9c4800`, `--accent-ink`): The orange to use for **small** accent text — navigation, labels, chips, kickers, hover states on link-sized type. Measures 5.32:1 against the ground, clearing AA with margin. Chosen over `#a94e00` (4.70:1) for headroom.
 
 ### Neutral
 - **Blue-Gray Ground** (`#e5edf5`): Shared page and raised-component surface.
@@ -101,11 +102,41 @@ a synthesized or nearest-match rendering while costing 255 KB instead of 108 KB.
 **Character:** Clear Persian forms with weight-led hierarchy. Keep body copy comfortable and regular; use weight 700–800 to establish titles, section openers, and primary actions.
 
 ### Hierarchy
-- **Display** (800, responsive `rem`-bounded clamp, 1.28–1.5 line-height): Page-level hero headings.
-- **Headline** (800, approximately 1.55–2.05rem, 1.6–1.75 line-height): Featured article titles.
-- **Title** (700–800, approximately 1.1–1.35rem): Article-card and section headings.
-- **Body** (400, 1rem, 1.9–2 line-height): Supporting and article text; keep measures near 60–75ch where the layout allows.
-- **Label** (600–800, approximately 0.75–0.9rem): Navigation, metadata, and compact control labels; do not go below 11px for functional text.
+
+Set sizes with the `--text-*` tokens in `css/styles.css`, never with literals. The
+ramp is 13 steps and every `font-size` in both stylesheets resolves through it, so
+a new literal is a new off-ramp size by definition.
+
+| Token | Size | px | Role |
+|---|---|---|---|
+| `--text-xs` | 0.75rem | 12 | Captions, kickers, stat labels. **The floor** — DESIGN.md's 11px minimum for functional text, with margin. |
+| `--text-sm` | 0.8125rem | 13 | Dense metadata, card copy. |
+| `--text-md` | 0.875rem | 14 | Labels, navigation, buttons. |
+| `--text-lg` | 0.9375rem | 15 | Secondary body, excerpts. |
+| `--text-base` | 1rem | 16 | Body copy. |
+| `--text-lead` | 1.125rem | 18 | Lead-ins, emphasised body. |
+| `--text-title-sm` | 1.25rem | 20 | Small section titles. |
+| `--text-title` | 1.375rem | 22 | Article-card and section headings. |
+| `--text-title-lg` | 1.5rem | 24 | Featured titles. |
+| `--text-headline-sm` | 1.75rem | 28 | Page sub-headlines. |
+| `--text-headline` | 2rem | 32 | Page headlines. |
+| `--text-headline-lg` | 2.25rem | 36 | Mobile display maxima. |
+| `--text-display-xs` | 2.5rem | 40 | Smallest desktop display step. |
+
+Below `1rem` the step is `0.0625rem` (1px) because the design genuinely uses
+1px-level distinctions there; above it the steps widen. Hero and landing display
+sizes use `clamp()` whose endpoints should land on ramp steps where practical.
+
+- **Display** (800, `clamp()` bounded by ramp endpoints, 1.28–1.5 line-height): page-level hero headings.
+- **Headline** (800, `--text-headline-sm` … `--text-headline-lg`, 1.6–1.75 line-height): featured article titles.
+- **Title** (700–800, `--text-lead` … `--text-title`): article-card and section headings.
+- **Body** (400, `--text-base`, 1.9–2 line-height): supporting and article text; keep measures near 60–75ch where the layout allows.
+- **Label** (600–800, `--text-xs` … `--text-md`): navigation, metadata, and compact control labels; `--text-xs` is the floor, do not go below it.
+
+A `clamp()` middle term must be a **relative** length. `clamp(1.55rem, 1.85rem,
+2.05rem)` and `clamp(2.4rem, 3.4rem, 4.7rem)` both collapsed to a fixed value and
+were never fluid; both are fixed. Do not write one whose middle term is a `rem`
+literal.
 
 ## Layout
 
