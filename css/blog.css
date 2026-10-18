@@ -168,11 +168,12 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) 250px;
   align-items: start;
-  gap: 2rem;
+  gap: 3.4rem;
 }
 
 .blog-content-column {
   min-width: 0;
+  max-width: 70ch;
 }
 
 .featured-post {
@@ -1198,8 +1199,8 @@
 
 .article-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.7rem;
   margin-block-start: 1.5rem;
 }
 
@@ -1611,5 +1612,15 @@
   .hero-stat span {
     font-size: 0.68rem;
     line-height: 1.6;
+  }
+}
+
+@media (max-width: 900px) {
+  .blog-content-column {
+    max-width: none;
+  }
+
+  .blog-layout {
+    gap: 2rem;
   }
 }
