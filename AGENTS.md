@@ -651,6 +651,9 @@ CSS و یکی در frontmatter خودِ `DESIGN.md`. هر دو رفع شدند.
 هم رفت داخلش — و بعد push شد:
 
 ```html
+<!-- impeccable-live-start -->
+<script src="http://localhost:8400/live.js?token=..."></script>
+<!-- impeccable-live-end -->
 ```
 
 سه مشکل واقعی:

@@ -55,11 +55,18 @@ fi
 
 # Emit the file with the inject tag removed, to stdout.
 descaffold() {
-  python3 - "$REPO/$1" <<'PY'
+  python3 - "$REPO/$1" "$1" <<'PY'
 import re, sys
-s = open(sys.argv[1], encoding='utf-8').read()
-s = re.sub(r'[ \t]*<!-- impeccable-live-start -->.*?<!-- impeccable-live-end -->\n', '', s, flags=re.S)
-s = s.replace('\n</body>\n</html>', '\n  </body>\n</html>')
+path, rel = sys.argv[1], sys.argv[2]
+s = open(path, encoding='utf-8').read()
+# Only HTML that actually carries the tag as a live artifact. Without this guard
+# the regex also ate a FENCED EXAMPLE of the tag out of AGENTS.md, so a commit
+# went out with three lines of documentation silently missing while the working
+# file still looked correct -- index-based staging means the damage is invisible
+# to git status.
+if rel.endswith('.html') and '</body>' in s:
+    s = re.sub(r'[ \t]*<!-- impeccable-live-start -->.*?<!-- impeccable-live-end -->\n', '', s, flags=re.S)
+    s = s.replace('\n</body>\n</html>', '\n  </body>\n</html>')
 sys.stdout.write(s)
 PY
 }
